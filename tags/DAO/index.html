@@ -6,23 +6,17 @@
     
 
     
-    <title>FirstPost | Don&#39;t forget</title>
+    <title>태그: DAO | Don&#39;t forget</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
-    
-    <meta name="description" content="테스트 포스트Upload first post!">
-<meta property="og:type" content="article">
-<meta property="og:title" content="FirstPost">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/FirstPost/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Don&#39;t forget">
+<meta property="og:url" content="http://yoursite.com/tags/DAO/index.html">
 <meta property="og:site_name" content="Don&#39;t forget">
-<meta property="og:description" content="테스트 포스트Upload first post!">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-22T11:48:44.304Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FirstPost">
-<meta name="twitter:description" content="테스트 포스트Upload first post!">
+<meta name="twitter:title" content="Don&#39;t forget">
     
 
     
@@ -131,118 +125,90 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    미지정
+    <i class="icon fa fa-tag"></i>태그: <em>DAO</em>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-FirstPost" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2018" class="archive-year"><i class="icon fa fa-calendar-o"></i>2018</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
+            </div>
+            <div class="date"><time datetime="2018-08-22T14:23:12.000Z" itemprop="datePublished">2018-08-22</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        FirstPost
+        <a href="/2018/08/22/jdbcEx-180821/">Ojdbc_1_0821</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-        <a href="/2018/08/22/FirstPost/" class="article-date">
-            <time datetime="2018-08-22T05:22:37.000Z" itemprop="datePublished">2018-08-22</time>
-        </a>
-    </div>
-
-                
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <h1 id="테스트-포스트"><a href="#테스트-포스트" class="headerlink" title="테스트 포스트"></a>테스트 포스트</h1><p>Upload first post!</p>
-
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="http://yoursite.com/2018/08/22/FirstPost/" data-id="cjl559ok80000ncuqso8b2uox" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
+        <p class="article-excerpt">
+            Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter)
+** PreparedStatement 사용 : 더 안전하고 활용도 큼 -&gt; Statement 대신 이걸로 쓰기!
+DAO 패키지123456789101112131415161718192021222324252627282930313233343536373839404
+        </p>
     </div>
 </article>
-
-    <section id="comments">
     
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
+            </div>
+            <div class="date"><time datetime="2018-08-22T13:26:20.000Z" itemprop="datePublished">2018-08-22</time></div>
+        </div>
+        
     
-    </section>
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/08/22/DAODTO/">DAO &amp; DTO</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+DTO, Data Transmission Object(프레임워크 단에서 주로 쓰이는 용어)
+
+데이터 전송 객체
+VO (Value Object)  
+계층간 데이터 교환을 위한 자바 클래스( Java Beans:  , JAVA EE(EnterPrise : 웹이나 대규모 플젝할 때 쓰임, (JAVA SE (기본))) - 이쪽에서  주로 사용하는 용어)
+
+DTO
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+
+    </div></section>
+
 
 
                         </div>
@@ -303,29 +269,6 @@
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2018/08/22/DAODTO/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            DAO &amp; DTO
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2018/08/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Hello World</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -470,13 +413,11 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://yoursite.com/2018/08/22/FirstPost/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

@@ -6,23 +6,24 @@
     
 
     
-    <title>FirstPost | Don&#39;t forget</title>
+    <title>Ojdbc_1_0821 | Don&#39;t forget</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="" />
+        <meta name="keywords" content="PreparedStatement,DAO,DTO" />
     
-    <meta name="description" content="테스트 포스트Upload first post!">
+    <meta name="description" content="Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter) ** PreparedStatement 사용 : 더 안전하고 활용도 큼 -&amp;gt; Statement 대신 이걸로 쓰기! DAO 패키지123456789101112131415161718192021222324252627282930313233343536373839404">
+<meta name="keywords" content="PreparedStatement,DAO,DTO">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FirstPost">
-<meta property="og:url" content="http://yoursite.com/2018/08/22/FirstPost/index.html">
+<meta property="og:title" content="Ojdbc_1_0821">
+<meta property="og:url" content="http://yoursite.com/2018/08/22/jdbcEx-180821/index.html">
 <meta property="og:site_name" content="Don&#39;t forget">
-<meta property="og:description" content="테스트 포스트Upload first post!">
+<meta property="og:description" content="Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter) ** PreparedStatement 사용 : 더 안전하고 활용도 큼 -&amp;gt; Statement 대신 이걸로 쓰기! DAO 패키지123456789101112131415161718192021222324252627282930313233343536373839404">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-22T11:48:44.304Z">
+<meta property="og:updated_time" content="2018-08-22T15:28:31.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FirstPost">
-<meta name="twitter:description" content="테스트 포스트Upload first post!">
+<meta name="twitter:title" content="Ojdbc_1_0821">
+<meta name="twitter:description" content="Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter) ** PreparedStatement 사용 : 더 안전하고 활용도 큼 -&amp;gt; Statement 대신 이걸로 쓰기! DAO 패키지123456789101112131415161718192021222324252627282930313233343536373839404">
     
 
     
@@ -131,18 +132,18 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    미지정
+    <a class="page-title-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programing/JDBC/">JDBC</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-FirstPost" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-jdbcEx-180821" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        FirstPost
+        Ojdbc_1_0821
         </h1>
     
 
@@ -152,17 +153,24 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/08/22/FirstPost/" class="article-date">
-            <time datetime="2018-08-22T05:22:37.000Z" itemprop="datePublished">2018-08-22</time>
+        <a href="/2018/08/22/jdbcEx-180821/" class="article-date">
+            <time datetime="2018-08-22T14:23:12.000Z" itemprop="datePublished">2018-08-22</time>
         </a>
     </div>
 
                 
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/DAO/">DAO</a>, <a class="tag-link" href="/tags/DTO/">DTO</a>, <a class="tag-link" href="/tags/PreparedStatement/">PreparedStatement</a>
+    </div>
+
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="테스트-포스트"><a href="#테스트-포스트" class="headerlink" title="테스트 포스트"></a>테스트 포스트</h1><p>Upload first post!</p>
+            <p>Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter)</p>
+<p>** <strong>PreparedStatement</strong> 사용 : 더 안전하고 활용도 큼 -&gt; Statement 대신 이걸로 쓰기!</p>
+<h3 id="DAO-패키지"><a href="#DAO-패키지" class="headerlink" title="DAO 패키지"></a>DAO 패키지</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ojdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> dto.Emp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OjdbcEx_04</span> </span>&#123;</span><br><span class="line">	<span class="comment">// OJDBC DRIVER</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DRIVER = <span class="string">"oracle.jdbc.driver.OracleDriver"</span>;</span><br><span class="line">	<span class="comment">// DB 연결 정보</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:oracle:thin:@localhost:1521:xe"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"scott"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"tiger"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// OJDBC 객체</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Connection conn; <span class="comment">// DB 연결객체</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> PreparedStatement ps; <span class="comment">// SQL 수행객체</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ResultSet rs; <span class="comment">// 조회결과</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(DRIVER);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// ?없어도 PreparedStatement 사용가능</span></span><br><span class="line">		String sql = <span class="string">"SELECT * FROM emp WHERE job = ? ORDER BY empno"</span>;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br><span class="line"></span><br><span class="line">			ps = conn.prepareStatement(sql);</span><br><span class="line">			<span class="comment">// SQL의 첫번째 ? 에 데이터를 넣는다</span></span><br><span class="line">			ps.setString(<span class="number">1</span>, <span class="string">"SALESMAN"</span>);</span><br><span class="line"></span><br><span class="line">			<span class="comment">// SQL 쿼리 수행</span></span><br><span class="line">			rs = ps.executeQuery();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 쿼리 결과를 담은 List</span></span><br><span class="line">			List&lt;Emp&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 쿼리 결과 list 에 담기</span></span><br><span class="line">			<span class="keyword">while</span>(rs.next()) &#123; <span class="comment">//데이터가 없으면 false</span></span><br><span class="line"></span><br><span class="line">				<span class="comment">// 매번 emp 객체 생성해서 해당 객체를 list 에 넣는다</span></span><br><span class="line">				Emp emp = <span class="keyword">new</span> Emp();</span><br><span class="line"></span><br><span class="line">				emp.setEmpno(rs.getInt(<span class="string">"empno"</span>));</span><br><span class="line">				emp.setEname(rs.getString(<span class="string">"ename"</span>));</span><br><span class="line">				emp.setJob(rs.getString(<span class="string">"job"</span>));</span><br><span class="line">				emp.setMgr(rs.getInt(<span class="string">"mgr"</span>));</span><br><span class="line">				emp.setHiredate(rs.getDate(<span class="string">"hiredate"</span>));</span><br><span class="line">				emp.setSal(rs.getInt(<span class="string">"sal"</span>));</span><br><span class="line">				emp.setComm(rs.getInt(<span class="string">"comm"</span>));</span><br><span class="line">				emp.setDeptno(rs.getInt(<span class="string">"deptno"</span>));</span><br><span class="line"></span><br><span class="line">				list.add(emp);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">// 쿼리 결과 출력</span></span><br><span class="line">			<span class="keyword">for</span>( Emp e : list) &#123;</span><br><span class="line">				System.out.println(e);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">try</span> &#123;</span><br><span class="line">				rs.close();</span><br><span class="line">				ps.close();</span><br><span class="line">				conn.close();</span><br><span class="line">			&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -170,7 +178,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2018/08/22/FirstPost/" data-id="cjl559ok80000ncuqso8b2uox" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://yoursite.com/2018/08/22/jdbcEx-180821/" data-id="cjl58a8ie0006pouq2dte0zpo" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -307,20 +315,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/08/22/DAODTO/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">새로운</strong>
-        <p class="article-nav-title">
-        
-            DAO &amp; DTO
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2018/08/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/08/22/DAODTO/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Hello World</p>
+        <p class="article-nav-title">DAO &amp; DTO</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -470,7 +468,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://yoursite.com/2018/08/22/FirstPost/';
+    var disqus_url = 'http://yoursite.com/2018/08/22/jdbcEx-180821/';
     
     (function() {
     var dsq = document.createElement('script');
