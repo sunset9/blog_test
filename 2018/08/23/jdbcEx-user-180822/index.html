@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
+    <meta charset="utf-8" />
 
-  
-  <title>Ojdbc 활용 예제(USER) _0822 | Don&#39;t forget</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. 이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다. [패키지 구성] user    ├ dao    │   ├ UserDao.java (인터페이스)    │   └">
+    
+
+    
+    <title>Ojdbc 활용 예제(USER) _0822 | Don&#39;t forget</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. 이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다. [패키지 구성] user    ├ dao    │   ├ UserDao.java (인터페이스)    │   └">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ojdbc 활용 예제(USER) _0822">
 <meta property="og:url" content="http://yoursite.com/2018/08/23/jdbcEx-user-180822/index.html">
@@ -18,228 +23,502 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ojdbc 활용 예제(USER) _0822">
 <meta name="twitter:description" content="JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. 이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다. [패키지 구성] user    ├ dao    │   ├ UserDao.java (인터페이스)    │   └">
-  
-    <link rel="alternate" href="/atom.xml" title="Don&#39;t forget" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+    
+
+    
+        <link rel="alternate" href="/" title="Don&#39;t forget" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
 </head>
 
 <body>
-  <div id="container">
     <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Don&#39;t forget</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">lazy</a>
-        </h2>
-      
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">lazy</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li></ul></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="검색"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </header>
-      <div class="outer">
-        <section id="main"><article id="post-jdbcEx-user-180822" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/23/jdbcEx-user-180822/" class="article-date">
-  <time datetime="2018-08-23T03:26:42.000Z" itemprop="datePublished">2018-08-23</time>
-</a>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Programing/">Programing</a>►<a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Ojdbc 활용 예제(USER) _0822
+    <a class="page-title-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programing/JDBC/">JDBC</a>
     </h1>
-  
-
-      </header>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-jdbcEx-user-180822" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다.</p>
+        <h1 class="article-title" itemprop="name">
+        Ojdbc 활용 예제(USER) _0822
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/08/23/jdbcEx-user-180822/" class="article-date">
+            <time datetime="2018-08-23T03:26:42.000Z" itemprop="datePublished">2018-08-23</time>
+        </a>
+    </div>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다.</p>
 <p>이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.<br>이번에는 <strong>DAO를 이용하여</strong> 코드를 작성하였다.</p>
 <p>[패키지 구성]<br> user<br>    ├ dao<br>    │   ├ UserDao.java (인터페이스)<br>    │   └ UserDaoImpl.java<br>    │<br>    ├ dto<br>    │   └ User.java<br>    └ ex<br>    &nbsp;&nbsp;&nbsp;&nbsp;└ UserEx.java</p>
 <h3 id="UserDao-인터페이스"><a href="#UserDao-인터페이스" class="headerlink" title="UserDao 인터페이스"></a>UserDao 인터페이스</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> user.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> user.dto.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//UserTest 테이블 전체 조회</span></span><br><span class="line">    <span class="comment">//	idx 정렬</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">selectAll</span><span class="params">()</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// idx를 이용한 UserTest 조회</span></span><br><span class="line">    <span class="comment">//	1명이 조회되도록 한다</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">selectByIdx</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// User 삽입</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUser</span><span class="params">(User insertUser)</span></span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// idx를 이용한 UserTest 삭제</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteByIdx</span><span class="params">(<span class="keyword">int</span> idx)</span></span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="UserDaoImpl-java"><a href="#UserDaoImpl-java" class="headerlink" title="UserDaoImpl.java"></a>UserDaoImpl.java</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> user.dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> user.dto.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// DB 연결 정보</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String DRIVER = <span class="string">"oracle.jdbc.driver.OracleDriver"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:oracle:thin:@localhost:1521:xe"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String USERNAME = <span class="string">"scott"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"tiger"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// DB 연결 객체</span></span><br><span class="line">    <span class="keyword">private</span> Connection conn;</span><br><span class="line">    <span class="comment">// JDBC 객체</span></span><br><span class="line">    <span class="keyword">private</span> PreparedStatement ps;</span><br><span class="line">    <span class="keyword">private</span> ResultSet rs;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UserDaoImpl</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 드라이버 로드</span></span><br><span class="line">            Class.forName(DRIVER);</span><br><span class="line">            </span><br><span class="line">            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 오토커밋 설정(기본값 : true)</span></span><br><span class="line">            <span class="comment">// 오토커밋 시 중간에 에러나서 프로그램종료되면 자동커밋, 데이터 깨질 수 있음</span></span><br><span class="line">            conn.setAutoCommit(<span class="keyword">false</span>); </span><br><span class="line">            <span class="comment">// 이러면 commit, rollback 관리를 명시적으로 해줘야함</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;User&gt; <span class="title">selectAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"SELECT * FROM userTest ORDER BY idx"</span>;</span><br><span class="line">        List&lt;User&gt; userList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ps = conn.prepareStatement(sql);</span><br><span class="line">            rs = ps.executeQuery();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">while</span>(rs.next()) &#123;</span><br><span class="line">                User user = <span class="keyword">new</span> User();</span><br><span class="line">                </span><br><span class="line">                user.setIdx(rs.getInt(<span class="string">"idx"</span>));</span><br><span class="line">                user.setUserid(rs.getString(<span class="string">"userid"</span>));</span><br><span class="line">                user.setName(rs.getString(<span class="string">"name"</span>));</span><br><span class="line">                </span><br><span class="line">                userList.add(user);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> userList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">selectByIdx</span><span class="params">(<span class="keyword">int</span> idx)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"SELECT * FROM userTest WHERE idx = ?"</span>;</span><br><span class="line">        User user = <span class="keyword">null</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ps = conn.prepareStatement(sql);</span><br><span class="line">            </span><br><span class="line">            ps.setInt(<span class="number">1</span>, idx);</span><br><span class="line">            rs = ps.executeQuery();</span><br><span class="line">            </span><br><span class="line">            user = <span class="keyword">new</span> User();</span><br><span class="line">            <span class="keyword">if</span>(rs.next()) &#123;</span><br><span class="line">                user.setIdx(rs.getInt(<span class="string">"idx"</span>));</span><br><span class="line">                user.setName(rs.getString(<span class="string">"name"</span>));</span><br><span class="line">                user.setUserid(rs.getString(<span class="string">"userid"</span>));</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"** 조회: 해당 IDX에 해당하는 유저가 없습니다."</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertUser</span><span class="params">(User insertUser)</span> </span>&#123;</span><br><span class="line">        String userId = insertUser.getUserid();</span><br><span class="line">        String userName = insertUser.getName();</span><br><span class="line">        String sql = <span class="string">"INSERT INTO userTest(idx, userid, name) VALUES (userTest_SQ.nextval,?,?)"</span>;</span><br><span class="line">        String sql2 = <span class="string">"SELECT COUNT(*) FROM userTest WHERE userid = upper(?)"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 중복 아이디 체크</span></span><br><span class="line">            PreparedStatement ps2 = conn.prepareStatement(sql2);</span><br><span class="line">            ps2.setString(<span class="number">1</span>, userId);</span><br><span class="line">            rs = ps2.executeQuery();</span><br><span class="line">            rs.next();</span><br><span class="line">            <span class="comment">// 해당 아이디가 있다면 추가 X</span></span><br><span class="line">            <span class="keyword">if</span>(rs.getInt(<span class="number">1</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"** 삽입: 같은 ID 가 존재합니다."</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// user 추가</span></span><br><span class="line">                ps = conn.prepareStatement(sql);</span><br><span class="line">                ps.setString(<span class="number">1</span>, userId);</span><br><span class="line">                ps.setString(<span class="number">2</span>, userName);</span><br><span class="line">                </span><br><span class="line">                ps.executeUpdate();</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            conn.commit(); <span class="comment">// 명시적으로 커밋하기</span></span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                conn.rollback(); <span class="comment">// 예외 발생 시 롤백 </span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteByIdx</span><span class="params">(<span class="keyword">int</span> idx)</span> </span>&#123;</span><br><span class="line">        String sql = <span class="string">"DELETE userTest WHERE idx = ?"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ps = conn.prepareStatement(sql);</span><br><span class="line">            ps.setInt(<span class="number">1</span>, idx);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>( ps.executeUpdate() == <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"** 삭제: 해당 IDX에 해당하는 유저가 없습니다."</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            conn.commit(); <span class="comment">// 명시적으로 커밋하기</span></span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                conn.rollback(); <span class="comment">// 예외 발생 시 롤백 </span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e1) &#123;</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123; </span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                ps.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>** 메소드 안의 catch문에서 자원 해제할 때 conn.close() 는 하면 안된다. 연결 객체를 해제해버리면 다른 메소드에서 접근 할 수 없다.</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/23/jdbcEx-user-180822/" data-id="cjlc8rrpd0002ucuqh76px4rd" class="article-share-link">공유</a>
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/08/23/jdbcEx-singleton-180823/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">최신</strong>
-      <div class="article-nav-title">
-        
-          Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/08/23/codeBlockSpace/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">이전</strong>
-      <div class="article-nav-title">코드블럭 스타일 바꾸기 (수정예정)</div>
-    </a>
-  
-</nav>
+        </div>
+        <footer class="article-footer">
+            
 
-  
+
+
+    <a data-url="http://yoursite.com/2018/08/23/jdbcEx-user-180822/" data-id="cjlc8rrpd0002ucuqh76px4rd" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
 </article>
 
-</section>
-        
-          <aside id="sidebar">
-  
+    <section id="comments">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">카테고리</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a></li></ul></li></ul>
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
-  </div>
 
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">태그</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/">DAO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTO/">DTO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PreparedStatement/">PreparedStatement</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton/">Singleton</a></li></ul>
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">태그 클라우드</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/DAO/" style="font-size: 20px;">DAO</a> <a href="/tags/DTO/" style="font-size: 20px;">DTO</a> <a href="/tags/PreparedStatement/" style="font-size: 10px;">PreparedStatement</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a>
-    </div>
-  </div>
-
-  
+        
+<nav id="article-nav">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">아카이브</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
+        <a href="/2018/08/23/jdbcEx-singleton-180823/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">최근 포스트</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/08/23/jdbcEx-singleton-180823/">Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/23/jdbcEx-user-180822/">Ojdbc 활용 예제(USER) _0822</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/23/codeBlockSpace/">코드블럭 스타일 바꾸기 (수정예정)</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/22/jdbcEx-180821/">Ojdbc 사용 예제 _0821</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/22/DAODTO/">DAO &amp; DTO</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Hae Jin<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
+    
+        <a href="/2018/08/23/codeBlockSpace/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">코드블럭 스타일 바꾸기 (수정예정)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/08/23/jdbcEx-singleton-180823/" class="title">Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823</a></p>
+                            <p class="item-date"><time datetime="2018-08-23T05:16:56.000Z" itemprop="datePublished">2018-08-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/08/23/jdbcEx-user-180822/" class="title">Ojdbc 활용 예제(USER) _0822</a></p>
+                            <p class="item-date"><time datetime="2018-08-23T03:26:42.000Z" itemprop="datePublished">2018-08-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/08/23/codeBlockSpace/" class="title">코드블럭 스타일 바꾸기 (수정예정)</a></p>
+                            <p class="item-date"><time datetime="2018-08-23T01:17:45.000Z" itemprop="datePublished">2018-08-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/08/22/jdbcEx-180821/" class="title">Ojdbc 사용 예제 _0821</a></p>
+                            <p class="item-date"><time datetime="2018-08-22T14:23:12.000Z" itemprop="datePublished">2018-08-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/08/22/DAODTO/" class="title">DAO &amp; DTO</a></p>
+                            <p class="item-date"><time datetime="2018-08-22T13:26:20.000Z" itemprop="datePublished">2018-08-22</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">4</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/">DAO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTO/">DTO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PreparedStatement/">PreparedStatement</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton/">Singleton</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/DAO/" style="font-size: 20px;">DAO</a> <a href="/tags/DTO/" style="font-size: 20px;">DTO</a> <a href="/tags/PreparedStatement/" style="font-size: 10px;">PreparedStatement</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Hae Jin</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yoursite.com/2018/08/23/jdbcEx-user-180822/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script>
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
 
 
 
-  </div>
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
 </body>
 </html>
