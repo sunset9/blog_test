@@ -5,15 +5,19 @@
   
 
   
-  <title>Don&#39;t forget</title>
+  <title>Ojdbc 활용 예제(USER) _0822 | Don&#39;t forget</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Don&#39;t forget">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. 이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다. [패키지 구성] user    ├ dao    │   ├ UserDao.java (인터페이스)    │   └">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ojdbc 활용 예제(USER) _0822">
+<meta property="og:url" content="http://yoursite.com/2018/08/23/jdbcEx-user-180822/index.html">
 <meta property="og:site_name" content="Don&#39;t forget">
+<meta property="og:description" content="JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. 이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다. [패키지 구성] user    ├ dao    │   ├ UserDao.java (인터페이스)    │   └">
 <meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-08-23T09:54:31.627Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Don&#39;t forget">
+<meta name="twitter:title" content="Ojdbc 활용 예제(USER) _0822">
+<meta name="twitter:description" content="JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. 이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다. [패키지 구성] user    ├ dao    │   ├ UserDao.java (인터페이스)    │   └">
   
     <link rel="alternate" href="/atom.xml" title="Don&#39;t forget" type="application/atom+xml">
   
@@ -64,58 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-jdbcEx-singleton-180823" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/23/jdbcEx-singleton-180823/" class="article-date">
-  <time datetime="2018-08-23T05:16:56.000Z" itemprop="datePublished">2018-08-23</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Programing/">Programing</a>►<a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/jdbcEx-singleton-180823/">Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>이전 포스팅에서 DTO, DAO를 이용하여 Ojdbc를 활용한 DB작업을 했었다. </p>
-<p>아래는 이전 포스팅의 UserDaoImpl 클래스 생성자의 한 부분이다.</p>
-<p>UserDaoImpl.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 드라이버 로드</span><br><span class="line">Class.forName(DRIVER);</span><br><span class="line">// DB 연결</span><br><span class="line">conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br></pre></td></tr></table></figure></p>
-<p>만약 여러 DAO 클래스를 작성한다면,<br>위의 코드가(DB 연결객체 생성 코드) 계속 중복해서 쓰이기 때문에 DAO 클래스의 개수만큼 DB와의 연결이 수립된다.<br>-&gt; <strong>싱글톤 패턴으로 해결한다</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dbutil;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBConn</span> </span>&#123;</span><br><span class="line">    <span class="comment">// DB 연결 정보</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DRIVER = <span class="string">"oracle.jdbc.driver.OracleDriver"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:oracle:thin:@localhost:1521:xe"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"scott"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"tiger"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// DB 연결객체</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection conn = <span class="keyword">null</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// private 생성자</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DBConn</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// Connection 객체 반환 = Singleton Pattern</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// DB 연결이 안되어있을 때만 동작 </span></span><br><span class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Class.forName(DRIVER); <span class="comment">//드라이버 로드</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment">// DB 연결객체 생성</span></span><br><span class="line">                conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> conn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>위 처럼 DB 연결객체를 싱글톤으로 사용할 수 있도록 따로 클래스를 만들어 준다.</p>
-<p>이제는 위의 클래스로</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl2</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    <span class="comment">// DB 연결 객체 -&gt; 싱글톤</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection conn = DBConn.getConnection(); </span><br><span class="line">    </span><br><span class="line">    <span class="comment">// JDBC 객체</span></span><br><span class="line">    <span class="keyword">private</span> PreparedStatement ps;</span><br><span class="line">    <span class="keyword">private</span> ResultSet rs;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ...(생략)...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/23/jdbcEx-singleton-180823/" data-id="cjlc8rrpa0001ucuqtgy54m1z" class="article-share-link">공유</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Singleton/">Singleton</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jdbcEx-user-180822" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-jdbcEx-user-180822" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/08/23/jdbcEx-user-180822/" class="article-date">
   <time datetime="2018-08-23T03:26:42.000Z" itemprop="datePublished">2018-08-23</time>
@@ -132,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/jdbcEx-user-180822/">Ojdbc 활용 예제(USER) _0822</a>
+    <h1 class="article-title" itemprop="name">
+      Ojdbc 활용 예제(USER) _0822
     </h1>
   
 
@@ -157,170 +110,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-codeBlockSpace" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/23/codeBlockSpace/" class="article-date">
-  <time datetime="2018-08-23T01:17:45.000Z" itemprop="datePublished">2018-08-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/08/23/jdbcEx-singleton-180823/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">최신</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/codeBlockSpace/">코드블럭 스타일 바꾸기 (수정예정)</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><h3 id="코드블럭의-탭-간격-바꾸기"><a href="#코드블럭의-탭-간격-바꾸기" class="headerlink" title="코드블럭의 탭 간격 바꾸기"></a>코드블럭의 탭 간격 바꾸기</h3>_config.yml 파일에서<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">highlight:</span><br><span class="line">    tab_replace: &apos;    &apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>tab_replace 에 원하는 만큼의 간격을 넣어준다.</p>
-<p>간단하게 바꿀 수 있는 거였는데, 별로의 스타일 파일을 넣어주거나 하는 식의 방식으로 하는 줄알고 엄청 헤맸다.</p>
-<ul>
-<li><h3 id="코드블럭의-하이라이트-스타일-바꾸기"><a href="#코드블럭의-하이라이트-스타일-바꾸기" class="headerlink" title="코드블럭의 하이라이트 스타일 바꾸기"></a>코드블럭의 하이라이트 스타일 바꾸기</h3>현재 HUEMAN 테마를 사용 중이다.</li>
-</ul>
-<p>themes\hueman_config.yml 파일을 열어<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">highlight theme:</span><br></pre></td></tr></table></figure></p>
-<p>를 바꿔준다. 바꿔주려는 명은 css\highlight에 존재하는 파일명중 하나로 바꿔주면 된다.</p>
-<p>하이라이트 스타일을 바꾸는 방법은 HUEMAN공식 문서에 존재?한다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/23/codeBlockSpace/" data-id="cjlc8rrp30000ucuqald2imdm" class="article-share-link">공유</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-jdbcEx-180821" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/22/jdbcEx-180821/" class="article-date">
-  <time datetime="2018-08-22T14:23:12.000Z" itemprop="datePublished">2018-08-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Programing/">Programing</a>►<a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/22/jdbcEx-180821/">Ojdbc 사용 예제 _0821</a>
-    </h1>
   
+    <a href="/2018/08/23/codeBlockSpace/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">이전</strong>
+      <div class="article-nav-title">코드블럭 스타일 바꾸기 (수정예정)</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>DB의 emp 테이블에서 job = ‘SALESMAN’ 인 컬럼들을 조회하여 출력한다.<br>출력 시 Emp 클래스를 이용하여 출력한다.</p>
-<p>Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter)</p>
-<p>※ <strong>PreparedStatement</strong> 사용 : 더 안전하고 활용도 큼 -&gt; Statement 대신 이걸로 쓰기!</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ojdbc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> dto.Emp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OjdbcEx_04</span> </span>&#123;</span><br><span class="line">    <span class="comment">// OJDBC DRIVER</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DRIVER = <span class="string">"oracle.jdbc.driver.OracleDriver"</span>;</span><br><span class="line">    <span class="comment">// DB 연결 정보</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:oracle:thin:@localhost:1521:xe"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"scott"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"tiger"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// OJDBC 객체</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection conn; <span class="comment">// DB 연결객체</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PreparedStatement ps; <span class="comment">// SQL 수행객체</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ResultSet rs; <span class="comment">// 조회결과</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 드라이버 로드</span></span><br><span class="line">            Class.forName(DRIVER);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ?없어도 PreparedStatement 사용가능</span></span><br><span class="line">        String sql = <span class="string">"SELECT * FROM emp WHERE job = ? ORDER BY empno"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br><span class="line"></span><br><span class="line">            ps = conn.prepareStatement(sql);</span><br><span class="line">            <span class="comment">// SQL의 첫번째 ? 에 데이터를 넣는다</span></span><br><span class="line">            ps.setString(<span class="number">1</span>, <span class="string">"SALESMAN"</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// SQL 쿼리 수행</span></span><br><span class="line">            rs = ps.executeQuery();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 쿼리 결과를 담은 List</span></span><br><span class="line">            List&lt;Emp&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 쿼리 결과 list 에 담기</span></span><br><span class="line">            <span class="keyword">while</span>(rs.next()) &#123; <span class="comment">//데이터가 없으면 false</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// 매번 emp 객체 생성해서 해당 객체를 list 에 넣는다</span></span><br><span class="line">                Emp emp = <span class="keyword">new</span> Emp();</span><br><span class="line"></span><br><span class="line">                emp.setEmpno(rs.getInt(<span class="string">"empno"</span>));</span><br><span class="line">                emp.setEname(rs.getString(<span class="string">"ename"</span>));</span><br><span class="line">                emp.setJob(rs.getString(<span class="string">"job"</span>));</span><br><span class="line">                emp.setMgr(rs.getInt(<span class="string">"mgr"</span>));</span><br><span class="line">                emp.setHiredate(rs.getDate(<span class="string">"hiredate"</span>));</span><br><span class="line">                emp.setSal(rs.getInt(<span class="string">"sal"</span>));</span><br><span class="line">                emp.setComm(rs.getInt(<span class="string">"comm"</span>));</span><br><span class="line">                emp.setDeptno(rs.getInt(<span class="string">"deptno"</span>));</span><br><span class="line"></span><br><span class="line">                list.add(emp);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 쿼리 결과 출력</span></span><br><span class="line">            <span class="keyword">for</span>( Emp e : list) &#123;</span><br><span class="line">                System.out.println(e);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                rs.close();</span><br><span class="line">                ps.close();</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>** 드라이버 로드해주는 코드는 ojdbc4.jar 인가 ojdbc6.jar 부터는 자동으로 해줘서 안써도 실행은 된다고 한다.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/jdbcEx-180821/" data-id="cjl58a8ie0006pouq2dte0zpo" class="article-share-link">공유</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DAO/">DAO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DTO/">DTO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PreparedStatement/">PreparedStatement</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-DAODTO" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/08/22/DAODTO/" class="article-date">
-  <time datetime="2018-08-22T13:26:20.000Z" itemprop="datePublished">2018-08-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Programing/">Programing</a>►<a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/22/DAODTO/">DAO &amp; DTO</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li><h4 id="DTO-Data-Transmission-Object"><a href="#DTO-Data-Transmission-Object" class="headerlink" title="DTO, Data Transmission Object"></a>DTO, Data Transmission Object</h4><p>(프레임워크 단에서 주로 쓰이는 용어)</p>
-<ul>
-<li>데이터 전송 객체</li>
-<li>VO (Value Object)  </li>
-<li><p>계층간 데이터 교환을 위한 자바 클래스<br>( Java Beans:  , JAVA EE(EnterPrise : 웹이나 대규모 플젝할 때 쓰임, (JAVA SE (기본))) - 이쪽에서  주로 사용하는 용어)</p>
-</li>
-<li><p>DTO 클래스 명은 테이블의 이름과 같게 하는 것이 좋다</p>
-</li>
-<li>멤버 필드는 모두 private<br>(데이터베이스 테이블의 컬럼명과 같게 하는 것이 좋다)</li>
-<li>메소드는 getter, setter, toString() 만 작성</li>
-</ul>
-</li>
-</ul>
-<p>  <em>** <strong>VO</strong> : 데이터로만 이뤄진 객체<br>  &nbsp;&nbsp;&nbsp;&nbsp;<strong>DTO</strong> :  VO 랑 거의 같은 의미. 전송을 목적으로 했을 때 DTO 라고 씀 </em></p>
-<ul>
-<li><h4 id="DAO-Data-Access-Object"><a href="#DAO-Data-Access-Object" class="headerlink" title="DAO, Data Access Object"></a>DAO, Data Access Object</h4><ul>
-<li>Database의 데이터에 접근하기 위한 객체</li>
-<li>데이터베이스에 수행할 SQL 문을 하나의 메소드의 기능으로 구현하여 모아놓은 객체</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/22/DAODTO/" data-id="cjl569oy50001pouq37t0p2x1" class="article-share-link">공유</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DAO/">DAO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DTO/">DTO</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
