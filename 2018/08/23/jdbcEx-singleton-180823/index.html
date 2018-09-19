@@ -2,11 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
-
+	
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">	
+	<link rel="stylesheet" href="/css/style.css">
+	
     
 
     
-    <title>Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823 | Don&#39;t forget</title>
+    <title>Singleton Pattern을 이용한 Ojdbc 활용 예제 | Don&#39;t forget</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -15,14 +21,14 @@
     <meta name="description" content="이전 포스팅에서 DTO, DAO를 이용하여 Ojdbc를 활용한 DB작업을 했었다. 아래는 이전 포스팅의 UserDaoImpl 클래스 생성자의 한 부분이다. UserDaoImpl.java1234// 드라이버 로드Class.forName(DRIVER);// DB 연결conn = DriverManager.getConnection(URL, USERNAME, PAS">
 <meta name="keywords" content="Singleton">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823">
+<meta property="og:title" content="Singleton Pattern을 이용한 Ojdbc 활용 예제">
 <meta property="og:url" content="http://yoursite.com/2018/08/23/jdbcEx-singleton-180823/index.html">
 <meta property="og:site_name" content="Don&#39;t forget">
 <meta property="og:description" content="이전 포스팅에서 DTO, DAO를 이용하여 Ojdbc를 활용한 DB작업을 했었다. 아래는 이전 포스팅의 UserDaoImpl 클래스 생성자의 한 부분이다. UserDaoImpl.java1234// 드라이버 로드Class.forName(DRIVER);// DB 연결conn = DriverManager.getConnection(URL, USERNAME, PAS">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-29T13:15:46.916Z">
+<meta property="og:updated_time" content="2018-09-19T06:43:58.139Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823">
+<meta name="twitter:title" content="Singleton Pattern을 이용한 Ojdbc 활용 예제">
 <meta name="twitter:description" content="이전 포스팅에서 DTO, DAO를 이용하여 Ojdbc를 활용한 DB작업을 했었다. 아래는 이전 포스팅의 UserDaoImpl 클래스 생성자의 한 부분이다. UserDaoImpl.java1234// 드라이버 로드Class.forName(DRIVER);// DB 연결conn = DriverManager.getConnection(URL, USERNAME, PAS">
     
 
@@ -77,7 +83,7 @@
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li></ul></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/jQuery/">jQuery</a></li></ul></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -143,7 +149,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823
+        Singleton Pattern을 이용한 Ojdbc 활용 예제
         </h1>
     
 
@@ -172,8 +178,8 @@
 <p>아래는 이전 포스팅의 UserDaoImpl 클래스 생성자의 한 부분이다.</p>
 <figure class="highlight java"><figcaption><span>UserDaoImpl.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 드라이버 로드</span></span><br><span class="line">Class.forName(DRIVER);</span><br><span class="line"><span class="comment">// DB 연결</span></span><br><span class="line">conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br></pre></td></tr></table></figure>
 <p>만약 여러 DAO 클래스를 작성한다면,<br>위의 코드가(DB 연결객체 생성 코드) 계속 중복해서 쓰이기 때문에 DAO 클래스의 개수만큼 DB와의 연결이 수립된다.<br>-&gt; <strong>싱글톤 패턴으로 해결한다</strong></p>
-<figure class="highlight java"><figcaption><span>DBConn.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dbutil;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBConn</span> </span>&#123;</span><br><span class="line">    <span class="comment">// DB 연결 정보</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DRIVER = <span class="string">"oracle.jdbc.driver.OracleDriver"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:oracle:thin:@localhost:1521:xe"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"scott"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"tiger"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// DB 연결객체</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection conn = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private 생성자</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DBConn</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Connection 객체 반환 = Singleton Pattern</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// DB 연결이 안되어있을 때만 동작</span></span><br><span class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Class.forName(DRIVER); <span class="comment">//드라이버 로드</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// DB 연결객체 생성</span></span><br><span class="line">                conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> conn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>위 처럼 DB 연결객체를 싱글톤으로 사용할 수 있도록 따로 클래스를 만들어 준다.</p>
+<p>우선 DB 연결객체를 싱글톤으로 사용할 수 있도록 따로 클래스를 만들어 준다.</p>
+<figure class="highlight java"><figcaption><span>DBConn.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> dbutil;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBConn</span> </span>&#123;</span><br><span class="line">    <span class="comment">// DB 연결 정보</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DRIVER = <span class="string">"oracle.jdbc.driver.OracleDriver"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String URL = <span class="string">"jdbc:oracle:thin:@localhost:1521:xe"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String USERNAME = <span class="string">"scott"</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"tiger"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// DB 연결객체</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection conn = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// private 생성자 - 외부생성 불가</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DBConn</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Connection 객체 반환 = Singleton Pattern</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// DB 연결이 안되어있을 때만 동작</span></span><br><span class="line">        <span class="comment">// getInstance()를 호출할 때까지 객체생성을 미룸</span></span><br><span class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Class.forName(DRIVER); <span class="comment">//드라이버 로드</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">// DB 연결객체 생성</span></span><br><span class="line">                conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> conn;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>이제 아래의 클래스처럼 객체를 싱글톤으로 얻어 사용하면 된다.</p>
 <figure class="highlight java"><figcaption><span>UserDaoImpl2.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDaoImpl2</span> <span class="keyword">implements</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// DB 연결 객체 -&gt; 싱글톤</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Connection conn = DBConn.getConnection();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// JDBC 객체</span></span><br><span class="line">    <span class="keyword">private</span> PreparedStatement ps;</span><br><span class="line">    <span class="keyword">private</span> ResultSet rs;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...(생략)...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -183,7 +189,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2018/08/23/jdbcEx-singleton-180823/" data-id="cjli36h930008k0uq0hitcxey" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://yoursite.com/2018/08/23/jdbcEx-singleton-180823/" data-id="cjm8stauo000ifcuq8eu1hadg" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -331,9 +337,9 @@
     </a>
     
     
-        <a href="/2018/08/23/jdbcEx-user-180822/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/08/23/singletonPattern/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">DAO를 이용한 Ojdbc 활용 예제(USER) _0822</p>
+        <p class="article-nav-title">싱글톤 패턴이란?</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -355,18 +361,9 @@
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a></p>
-                            <p class="item-title"><a href="/2018/08/31/singletonPattern/" class="title">싱글톤 패턴 정리</a></p>
-                            <p class="item-date"><time datetime="2018-08-31T04:07:37.000Z" itemprop="datePublished">2018-08-31</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a></p>
-                            <p class="item-title"><a href="/2018/08/27/setting-encode/" class="title">이클립스 한글 인코딩(UTF-8) 환경 설정</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:58:04.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/09/19/ready-jdbc/" class="title">JDBC 사전 준비</a></p>
+                            <p class="item-date"><time datetime="2018-09-19T06:46:12.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
                     </li>
                 
@@ -374,26 +371,35 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/filename-case/" class="title">HTML 파일명의 대소문자만 바꾸는 경우</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:52:40.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-title"><a href="/2018/09/19/programing-architecture/" class="title">프로그래밍 아키텍쳐/ MODEL 1,2 / MVC Pattern</a></p>
+                            <p class="item-date"><time datetime="2018-09-19T06:34:52.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/web-modules/" class="title">Web Project와 서버 연결하기</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:01:41.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a></p>
+                            <p class="item-title"><a href="/2018/09/18/servlet/" class="title">서블릿, Servlet</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T06:46:45.000Z" itemprop="datePublished">2018-09-18</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/install-tomcat/" class="title">톰캣 설치 및 적용</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T12:45:43.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a></p>
+                            <p class="item-title"><a href="/2018/09/18/jQuery-use/" class="title">jQuery 사용하기</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T04:01:02.000Z" itemprop="datePublished">2018-09-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a></p>
+                            <p class="item-title"><a href="/2018/09/12/jsp-basic-tag/" class="title">JSP 기본 태그</a></p>
+                            <p class="item-date"><time datetime="2018-09-12T06:51:51.000Z" itemprop="datePublished">2018-09-12</time></p>
                         </div>
                     </li>
                 
@@ -406,7 +412,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">3</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">24</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">3</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -416,7 +422,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">10</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
         </div>
     </div>
 

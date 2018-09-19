@@ -2,11 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
-
+	
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">	
+	<link rel="stylesheet" href="/css/style.css">
+	
     
 
     
-    <title>Web Project와 서버 연결하기 | Don&#39;t forget</title>
+    <title>Dynamic Web Project와 서버 연결하기 | Don&#39;t forget</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
@@ -14,15 +20,15 @@
     
     <meta name="description" content="Dynamic Web Project를 서버에서 실행시키기 위해서 서버와 프로젝트를 연결시켜줘야 한다. 방법1. Server 뷰에서 원하는 톰캣 서버를 우클릭하여 ‘Add and Remove’ 을 누른다. 후에 원하는 프로젝트를 ‘Add’ 해준다. (Front라는 이름의 프로젝트이다.) 방법2.Server 뷰에서 원하는 톰캣 서버를 더블클릭한다.노란색 박스로">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Web Project와 서버 연결하기">
+<meta property="og:title" content="Dynamic Web Project와 서버 연결하기">
 <meta property="og:url" content="http://yoursite.com/2018/08/27/web-modules/index.html">
 <meta property="og:site_name" content="Don&#39;t forget">
 <meta property="og:description" content="Dynamic Web Project를 서버에서 실행시키기 위해서 서버와 프로젝트를 연결시켜줘야 한다. 방법1. Server 뷰에서 원하는 톰캣 서버를 우클릭하여 ‘Add and Remove’ 을 누른다. 후에 원하는 프로젝트를 ‘Add’ 해준다. (Front라는 이름의 프로젝트이다.) 방법2.Server 뷰에서 원하는 톰캣 서버를 더블클릭한다.노란색 박스로">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://user-images.githubusercontent.com/42576587/44795744-68919800-abe6-11e8-8ca7-49cbae653ef3.png">
-<meta property="og:updated_time" content="2018-08-29T14:55:35.755Z">
+<meta property="og:updated_time" content="2018-09-19T06:27:25.508Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Web Project와 서버 연결하기">
+<meta name="twitter:title" content="Dynamic Web Project와 서버 연결하기">
 <meta name="twitter:description" content="Dynamic Web Project를 서버에서 실행시키기 위해서 서버와 프로젝트를 연결시켜줘야 한다. 방법1. Server 뷰에서 원하는 톰캣 서버를 우클릭하여 ‘Add and Remove’ 을 누른다. 후에 원하는 프로젝트를 ‘Add’ 해준다. (Front라는 이름의 프로젝트이다.) 방법2.Server 뷰에서 원하는 톰캣 서버를 더블클릭한다.노란색 박스로">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/42576587/44795744-68919800-abe6-11e8-8ca7-49cbae653ef3.png">
     
@@ -78,7 +84,7 @@
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li></ul></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/jQuery/">jQuery</a></li></ul></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -144,7 +150,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-        Web Project와 서버 연결하기
+        Dynamic Web Project와 서버 연결하기
         </h1>
     
 
@@ -173,6 +179,14 @@
 <p>브라우저에서 Path에 작성해놓은 경로를 치면 Document Base에 작성된 프로젝트 안에서 파일을 찾는다.<br>ex) Path 를 /lala 로 해놓았고 Front라는 프로젝트의 hi.html을 로드하려면,<br>웹 브라우저의 url에 localhost:port번호/lala/hi.html 라고 작성하면 된다.</p>
 <p>방법1로 추가시켰을 경우에는 Path가 자동으로 Document Base와 똑같이 설정된다.</p>
 <p>* Modules 설정 변경했으면, 서버를 재실행 시켜줘야한다.</p>
+<hr>
+
+<p><strong>추가</strong><br>만들어진 Web Project 폴더의 ‘Java Resource -&gt; Libraries’ 설명</p>
+<ul>
+<li>Apache Tomcat v9.0 -&gt; 톰캣 런타임. java EE 스펙이 들어가 있다.</li>
+<li>JRE System Library -&gt; 기본 java 프로그래밍 라이브러리. java se스펙이 들어가있다.</li>
+</ul>
+<p>프로젝트 오른쪽 클릭 - Build path : 실행환경 설정해주는 곳</p>
 
         </div>
         <footer class="article-footer">
@@ -180,7 +194,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2018/08/27/web-modules/" data-id="cjli36h9e000hk0uqix2uc0qe" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://yoursite.com/2018/08/27/web-modules/" data-id="cjm8staw0001kfcuqrb6qgbfe" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -352,18 +366,9 @@
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a></p>
-                            <p class="item-title"><a href="/2018/08/31/singletonPattern/" class="title">싱글톤 패턴 정리</a></p>
-                            <p class="item-date"><time datetime="2018-08-31T04:07:37.000Z" itemprop="datePublished">2018-08-31</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a></p>
-                            <p class="item-title"><a href="/2018/08/27/setting-encode/" class="title">이클립스 한글 인코딩(UTF-8) 환경 설정</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:58:04.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/09/19/ready-jdbc/" class="title">JDBC 사전 준비</a></p>
+                            <p class="item-date"><time datetime="2018-09-19T06:46:12.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
                     </li>
                 
@@ -371,26 +376,35 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/filename-case/" class="title">HTML 파일명의 대소문자만 바꾸는 경우</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:52:40.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-title"><a href="/2018/09/19/programing-architecture/" class="title">프로그래밍 아키텍쳐/ MODEL 1,2 / MVC Pattern</a></p>
+                            <p class="item-date"><time datetime="2018-09-19T06:34:52.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/web-modules/" class="title">Web Project와 서버 연결하기</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:01:41.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a></p>
+                            <p class="item-title"><a href="/2018/09/18/servlet/" class="title">서블릿, Servlet</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T06:46:45.000Z" itemprop="datePublished">2018-09-18</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/install-tomcat/" class="title">톰캣 설치 및 적용</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T12:45:43.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a></p>
+                            <p class="item-title"><a href="/2018/09/18/jQuery-use/" class="title">jQuery 사용하기</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T04:01:02.000Z" itemprop="datePublished">2018-09-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a></p>
+                            <p class="item-title"><a href="/2018/09/12/jsp-basic-tag/" class="title">JSP 기본 태그</a></p>
+                            <p class="item-date"><time datetime="2018-09-12T06:51:51.000Z" itemprop="datePublished">2018-09-12</time></p>
                         </div>
                     </li>
                 
@@ -403,7 +417,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">3</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">24</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">3</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -413,7 +427,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">10</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
         </div>
     </div>
 

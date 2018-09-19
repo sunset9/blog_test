@@ -2,7 +2,13 @@
 <html>
 <head>
     <meta charset="utf-8" />
-
+	
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">	
+	<link rel="stylesheet" href="/css/style.css">
+	
     
 
     
@@ -70,7 +76,7 @@
                                     <a class="main-nav-list-link" href="/">홈</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li></ul></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/jQuery/">jQuery</a></li></ul></li></ul>
                                     
                         </ul>
                         <nav id="sub-nav">
@@ -150,94 +156,23 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a>
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
             </div>
-            <div class="date"><time datetime="2018-08-31T04:07:37.000Z" itemprop="datePublished">2018-08-31</time></div>
+            <div class="date"><time datetime="2018-09-19T06:46:12.000Z" itemprop="datePublished">2018-09-19</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/31/singletonPattern/">싱글톤 패턴 정리</a>
+        <a href="/2018/09/19/ready-jdbc/">JDBC 사전 준비</a>
         </h1>
     
 
         <p class="article-excerpt">
-            디자인 패턴, Design Pattern
-잘 알려진 알고리즘의 형태
+            JDBC를 이용한 프로젝트 개발 시 사전준비 할 것
 
-프로그램 설계 상 발생하는 문제(issue)에 대한 해답을 문서화한것
+ojdbc6.jar -&gt; ‘WebContent - WEB-INF - lib’ 폴더로 복사
 
-프로그램을 개발하면서 자주 마주치는 상황(문제점)을 해결하기 위한 설계 노하우를 적용시킨 형태의 알고리즘들
-
-
-싱글톤 패턴, Singleton
-객체를 여러 번 생성하더라도 하나의 인스턴스가 유지되도록 고안한 패턴
-
-최
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a>
-            </div>
-            <div class="date"><time datetime="2018-08-27T14:58:04.000Z" itemprop="datePublished">2018-08-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/setting-encode/">이클립스 한글 인코딩(UTF-8) 환경 설정</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            웹에서는 EUC-KR 이나 UTF-8을 많이 사용한다.
-Window - Preferences 선택 후
-
-General 항목- Workspace 항목- 하단의 Text file encoding의&nbsp;&nbsp;&nbsp;&nbsp;Other: UTF-8 설정
-
-Web 항목- CSS Files- HTML Files- JSP FIles세가지 항목 모두   
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
-            </div>
-            <div class="date"><time datetime="2018-08-27T14:52:40.000Z" itemprop="datePublished">2018-08-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/filename-case/">HTML 파일명의 대소문자만 바꾸는 경우</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            ※ 사소주의톰캣의 배포과정에서는 대소문자 구분을 하지않기 때문에 단순히 대소문자만 바꿔서 저장하면 인식을 못하는 경우가 있다.(파일을 못찾음)배포할때 이미 파일이  존재한다고 인지해서 바뀐 파일명에 대한 파일을 처리해주지 않는다.하지만 인식과정에서는 대소문자 구분을 해주기 때문에 당연히 해당 파일이 존재하지 않는다고 처리된다.
--&gt; 해결방법: 다른 문
+DBConn.java 파일(DB 객체 싱글톤으로 이용할 수 있게 이전에 만들어 놓은 파일) -&gt; ‘Java Resource - src - dbutil’ 폴더로 복사(DB 객체 생성 파트는 항상 똑같아서 
         </p>
     </div>
 </article>
@@ -254,21 +189,29 @@ Web 항목- CSS Files- HTML Files- JSP FIles세가지 항목 모두
             <div class="category">
             <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
             </div>
-            <div class="date"><time datetime="2018-08-27T14:01:41.000Z" itemprop="datePublished">2018-08-27</time></div>
+            <div class="date"><time datetime="2018-09-19T06:34:52.000Z" itemprop="datePublished">2018-09-19</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/web-modules/">Web Project와 서버 연결하기</a>
+        <a href="/2018/09/19/programing-architecture/">프로그래밍 아키텍쳐/ MODEL 1,2 / MVC Pattern</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Dynamic Web Project를 서버에서 실행시키기 위해서 서버와 프로젝트를 연결시켜줘야 한다.
-방법1.
-Server 뷰에서 원하는 톰캣 서버를 우클릭하여 ‘Add and Remove’ 을 누른다.
-후에 원하는 프로젝트를 ‘Add’ 해준다. (Front라는 이름의 프로젝트이다.)
-방법2.Server 뷰에서 원하는 톰캣 서버를 더블클릭한다.노란색 박스로
+            프로그래밍 아키텍쳐
+프로그램 작성 구조(구성)
+
+MODEL 1 : 비지니스 로직과 프레젠테이션 로직을 합쳐놓은 것
+
+MODEL 2 : 비지니스 로직과 프레젠테이션 로직을 분리시켜 놓은 것
+
+비지니스 로직, Business Logic
+
+클라이언트(사용자)에게 보이지 않는 부분
+데이터를 처리하는 (가공하는) 응용프로그램의 일부 영역
+주로 데이터베이스 처리
+ex
         </p>
     </div>
 </article>
@@ -287,21 +230,24 @@ Server 뷰에서 원하는 톰캣 서버를 우클릭하여 ‘Add and Remove’
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a>
             </div>
-            <div class="date"><time datetime="2018-08-27T12:45:43.000Z" itemprop="datePublished">2018-08-27</time></div>
+            <div class="date"><time datetime="2018-09-18T06:46:45.000Z" itemprop="datePublished">2018-09-18</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/install-tomcat/">톰캣 설치 및 적용</a>
+        <a href="/2018/09/18/servlet/">서블릿, Servlet</a>
         </h1>
     
 
         <p class="article-excerpt">
-            톰캣 서버를 설치하고 이클립스에 올려 실행하고자 한다.기존에 이클립스를 Standard 버전을 쓰고 있었는데 해당 버전은 웹 프로젝트에 대한 지원이 안되기 때문에 톰캣 설치에 앞서 우선 이클립스 EE 버전을 새로 설치하려고 한다.
-
-Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 있으면 선택해서 upd
+            서블릿, Servlet
+Servlet = Server + Applet
+서버에서 동작하는 Applet이라는 뜻
+Applet : 자바에서 바이트 코드의 형태로 배포되는 실행가능 프로그램
+웹 어플리케이션을 작성하는 기술
+자바 일반클래스에 HttpServlet 클래스를 상속하면 서블릿 클래스라고 부른다(완성된 Applet파일을 업로드하면 톰캣이 실행시켜 준다 (시
         </p>
     </div>
 </article>
@@ -316,84 +262,24 @@ Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a>
             </div>
-            <div class="date"><time datetime="2018-08-23T05:16:56.000Z" itemprop="datePublished">2018-08-23</time></div>
+            <div class="date"><time datetime="2018-09-18T04:01:02.000Z" itemprop="datePublished">2018-09-18</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/23/jdbcEx-singleton-180823/">Singleton Pattern을 이용한 Ojdbc 활용 예제 _0823</a>
+        <a href="/2018/09/18/jQuery-use/">jQuery 사용하기</a>
         </h1>
     
 
         <p class="article-excerpt">
-            이전 포스팅에서 DTO, DAO를 이용하여 Ojdbc를 활용한 DB작업을 했었다.
-아래는 이전 포스팅의 UserDaoImpl 클래스 생성자의 한 부분이다.
-UserDaoImpl.java1234// 드라이버 로드Class.forName(DRIVER);// DB 연결conn = DriverManager.getConnection(URL, USERNAME, PAS
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
+            jQuery Core
+jQuery
+$
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
-            </div>
-            <div class="date"><time datetime="2018-08-23T03:26:42.000Z" itemprop="datePublished">2018-08-23</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/23/jdbcEx-user-180822/">DAO를 이용한 Ojdbc 활용 예제(USER) _0822</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            JDBC를 이용해 USERTEST테이블에 접근하여 몇 가지 쿼리를 수행한다. (UserDao 클래스 참고)
-이전 포스팅의 예제에서는 main 함수가 있는 클래스에 DB 연결, SQL 문 수행 등 모든 작업이 한 번에 이루어 졌었다.이번에는 DAO를 이용하여 코드를 작성하였다.메인 함수 실행부와 DB 연결 및 SQL작성부를 분리시킨다.
-* DAO: 데이터베이
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
-            </div>
-            <div class="date"><time datetime="2018-08-22T14:23:12.000Z" itemprop="datePublished">2018-08-22</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/22/jdbcEx-180821/">PreparedStatement을 이용한 Ojdbc 사용 예제 _0821</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            DB의 emp 테이블에서 job = ‘SALESMAN’ 인 컬럼들을 조회하여 출력한다.출력 시 Emp 클래스를 이용하여 출력한다.
-Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/setter)
-※ PreparedStatement 사용 : 더 안전하고 활용도 큼 -&gt; Statement 대신 이걸로 쓰기!
-1234567
+jQuery 문법이 적용되었음을 알리는 키워드
+1234567    jQuery(document).ready(function() &#123;    &#125;);//----------------------------------------    $(document).ready(function() &#123;    &#12
         </p>
     </div>
 </article>
@@ -412,26 +298,210 @@ Emp는 DTO클래스로 따로 만들었다. (사용 필드, toString, getter/set
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a>
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a>
             </div>
-            <div class="date"><time datetime="2018-08-22T13:26:20.000Z" itemprop="datePublished">2018-08-22</time></div>
+            <div class="date"><time datetime="2018-09-12T06:51:51.000Z" itemprop="datePublished">2018-09-12</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/22/DAODTO/">DAO &amp; DTO</a>
+        <a href="/2018/09/12/jsp-basic-tag/">JSP 기본 태그</a>
         </h1>
     
 
         <p class="article-excerpt">
             
-DTO, Data Transmission Object(프레임워크 단에서 주로 쓰이는 용어)
+JSP 문법
 
-데이터 전송 객체
-VO (Value Object)  
-계층간 데이터 교환을 위한 자바 클래스( Java Beans:  , JAVA EE(EnterPrise : 웹이나 대규모 플젝할 때 쓰임, (JAVA SE (기본))) - 이쪽에서  주로 사용하는 용어)
+HTML문서 양식에 Java코드를 삽입하는 형식
 
-DTO
+Servlet컨테이너(WAS)에 의해 Servlet코드로 변경된다
+
+
+
+
+
+JSP 기본 태그
+
+스크립트릿(Scriptlet)    &lt;%&nbsp;&nbsp;&nbsp;%&gt;
+
+선언(Declaration)        &lt;%!&nbsp;&nbsp;%&gt;
+
+표현식(Expressi
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a>
+            </div>
+            <div class="date"><time datetime="2018-09-06T03:58:55.000Z" itemprop="datePublished">2018-09-06</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/06/jQuery/">jQuery</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            jQuery?
+자바스크립트의 DOM을 쉽게 사용하기위해 만들어진 라이브러리
+
+순수 자바스크립트 코드보다 효율적이고, 코드생산성이 향상됨
+
+HTML노드, 스타일, 속성, 이벤트 등을 다룰 수 있다
+
+CSS 선택자를 이용한다
+
+http://www.jquery.com/
+
+
+jQuery 주요 기능
+jQuery DOM : JS DOM객체를 다루는 기능
+
+jQuery
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a>
+            </div>
+            <div class="date"><time datetime="2018-09-06T03:53:38.000Z" itemprop="datePublished">2018-09-06</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/06/cnd/">jQuery, CND를 이용해 파일 불러오기</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            CDN, Content Delivery Network
+jQuery 2.2.4 CDN
+12&lt;script src=&quot;https://code.jquery.com/jquery-2.2.4.min.js&quot;&gt;&lt;/script&gt;
+jQuery를 사용하기 위해 HTML 소스코드에 위와 같은 태그를 삽입해주면 별로의 다운로드 없이 파일을 받아
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Javascript/">Javascript</a>
+            </div>
+            <div class="date"><time datetime="2018-09-05T11:44:39.000Z" itemprop="datePublished">2018-09-05</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/05/js-eventListener/">JS Event Listener 등록하는 방법</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            JS Event Listener 등록하는(바인딩) 방법
+1. HTML 태그의 인라인 방식1&lt;div onclick=&quot;alert(&apos;hi!&apos;)&quot;\&gt;Hello&lt;/div\&gt;
+2. DOM을 이용한 바인딩 - Event Attribute사용1234var e = document.getElementById(&quot
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Javascript/">Javascript</a>
+            </div>
+            <div class="date"><time datetime="2018-09-05T08:23:04.000Z" itemprop="datePublished">2018-09-05</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/05/dom-api/">DOM 객체 함수 API</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Element 생성
+
+document.createElement(“tagName”): 요소 노드 만들기
+document.createTextNode(“text”): 텍스트 노드 만들기
+
+Element 추가
+
+객체.appendChild(대상) : 객체에 노드 연결(추가)하기
+ex) var pTag = document.createElement(“p”);&nbsp;
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Javascript/">Javascript</a>
+            </div>
+            <div class="date"><time datetime="2018-09-05T08:06:32.000Z" itemprop="datePublished">2018-09-05</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/05/dom/">DOM 정리</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            DOM, Document Object Model– 문서 객체 모델– document 내장객체를 뜻한다– HTML 문서의  태그– &lt;body&gt; 태그 내 요소들의 계층구조 == DOM– HTML문서의 요소(태그)들을 자바스크립트 코드로 접근하고 관리하기 위한 인터페이스
+관련 용어
+요소(Element)  : HTML문서 내의 태그
+문서 객체(Docum
         </p>
     </div>
 </article>
@@ -442,6 +512,11 @@ DTO
 
     </div></section>
 
+
+    <nav id="page-nav">
+        <span class="pages">Page 1 of 3</span>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/Programing/page/2/">2</a><a class="page-number" href="/categories/Programing/page/3/">3</a><a class="extend next" rel="next" href="/categories/Programing/page/2/">&raquo;</a>
+    </nav>
 
 
 
@@ -519,18 +594,9 @@ DTO
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a></p>
-                            <p class="item-title"><a href="/2018/08/31/singletonPattern/" class="title">싱글톤 패턴 정리</a></p>
-                            <p class="item-date"><time datetime="2018-08-31T04:07:37.000Z" itemprop="datePublished">2018-08-31</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a></p>
-                            <p class="item-title"><a href="/2018/08/27/setting-encode/" class="title">이클립스 한글 인코딩(UTF-8) 환경 설정</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:58:04.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
+                            <p class="item-title"><a href="/2018/09/19/ready-jdbc/" class="title">JDBC 사전 준비</a></p>
+                            <p class="item-date"><time datetime="2018-09-19T06:46:12.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
                     </li>
                 
@@ -538,26 +604,35 @@ DTO
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/filename-case/" class="title">HTML 파일명의 대소문자만 바꾸는 경우</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:52:40.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-title"><a href="/2018/09/19/programing-architecture/" class="title">프로그래밍 아키텍쳐/ MODEL 1,2 / MVC Pattern</a></p>
+                            <p class="item-date"><time datetime="2018-09-19T06:34:52.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/web-modules/" class="title">Web Project와 서버 연결하기</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T14:01:41.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a></p>
+                            <p class="item-title"><a href="/2018/09/18/servlet/" class="title">서블릿, Servlet</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T06:46:45.000Z" itemprop="datePublished">2018-09-18</time></p>
                         </div>
                     </li>
                 
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/08/27/install-tomcat/" class="title">톰캣 설치 및 적용</a></p>
-                            <p class="item-date"><time datetime="2018-08-27T12:45:43.000Z" itemprop="datePublished">2018-08-27</time></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a></p>
+                            <p class="item-title"><a href="/2018/09/18/jQuery-use/" class="title">jQuery 사용하기</a></p>
+                            <p class="item-date"><time datetime="2018-09-18T04:01:02.000Z" itemprop="datePublished">2018-09-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JSP/">JSP</a></p>
+                            <p class="item-title"><a href="/2018/09/12/jsp-basic-tag/" class="title">JSP 기본 태그</a></p>
+                            <p class="item-date"><time datetime="2018-09-12T06:51:51.000Z" itemprop="datePublished">2018-09-12</time></p>
                         </div>
                     </li>
                 
@@ -570,7 +645,7 @@ DTO
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">3</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">24</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">3</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -580,7 +655,7 @@ DTO
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">10</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
         </div>
     </div>
 
