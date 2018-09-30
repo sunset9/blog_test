@@ -12,23 +12,25 @@
     
 
     
-    <title>HTML 파일명의 대소문자만 바꾸는 경우 | Don&#39;t forget</title>
+    <title>MVC예제 - 간단한 회원가입 | Don&#39;t forget</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
         <meta name="keywords" content="" />
     
-    <meta name="description" content="※ 사소주의톰캣의 배포과정에서는 대소문자 구분을 하지않기 때문에 단순히 대소문자만 바꿔서 저장하면 인식을 못하는 경우가 있다.(파일을 못찾음)배포할때 이미 파일이  존재한다고 인지해서 바뀐 파일명에 대한 파일을 처리해주지 않는다.하지만 인식과정에서는 대소문자 구분을 해주기 때문에 당연히 해당 파일이 존재하지 않는다고 처리된다. -&amp;gt; 해결방법: 다른 문">
+    <meta name="description" content="MVC 패턴을 이용한 간단한 회원가입 기능을 구현해보고자 한다. 아래는 프로젝트 구조이다.이번에는 service를 추가해서 구현하였다. (이전 버전은 블로그에 정리해두지 않았다) [구조]  Controller: MemberController.java - Servlet Class  DAO: MemberDao.java - Interface: MemberDaoI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML 파일명의 대소문자만 바꾸는 경우">
-<meta property="og:url" content="http://yoursite.com/2018/08/27/filename-case/index.html">
+<meta property="og:title" content="MVC예제 - 간단한 회원가입">
+<meta property="og:url" content="http://yoursite.com/2018/09/12/servletEx-member/index.html">
 <meta property="og:site_name" content="Don&#39;t forget">
-<meta property="og:description" content="※ 사소주의톰캣의 배포과정에서는 대소문자 구분을 하지않기 때문에 단순히 대소문자만 바꿔서 저장하면 인식을 못하는 경우가 있다.(파일을 못찾음)배포할때 이미 파일이  존재한다고 인지해서 바뀐 파일명에 대한 파일을 처리해주지 않는다.하지만 인식과정에서는 대소문자 구분을 해주기 때문에 당연히 해당 파일이 존재하지 않는다고 처리된다. -&amp;gt; 해결방법: 다른 문">
+<meta property="og:description" content="MVC 패턴을 이용한 간단한 회원가입 기능을 구현해보고자 한다. 아래는 프로젝트 구조이다.이번에는 service를 추가해서 구현하였다. (이전 버전은 블로그에 정리해두지 않았다) [구조]  Controller: MemberController.java - Servlet Class  DAO: MemberDao.java - Interface: MemberDaoI">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-29T14:56:23.521Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/42576587/45753982-59d25a00-bc55-11e8-971a-e1389478a61f.PNG">
+<meta property="og:updated_time" content="2018-09-19T12:58:08.244Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML 파일명의 대소문자만 바꾸는 경우">
-<meta name="twitter:description" content="※ 사소주의톰캣의 배포과정에서는 대소문자 구분을 하지않기 때문에 단순히 대소문자만 바꿔서 저장하면 인식을 못하는 경우가 있다.(파일을 못찾음)배포할때 이미 파일이  존재한다고 인지해서 바뀐 파일명에 대한 파일을 처리해주지 않는다.하지만 인식과정에서는 대소문자 구분을 해주기 때문에 당연히 해당 파일이 존재하지 않는다고 처리된다. -&amp;gt; 해결방법: 다른 문">
+<meta name="twitter:title" content="MVC예제 - 간단한 회원가입">
+<meta name="twitter:description" content="MVC 패턴을 이용한 간단한 회원가입 기능을 구현해보고자 한다. 아래는 프로젝트 구조이다.이번에는 service를 추가해서 구현하였다. (이전 버전은 블로그에 정리해두지 않았다) [구조]  Controller: MemberController.java - Servlet Class  DAO: MemberDao.java - Interface: MemberDaoI">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/42576587/45753982-59d25a00-bc55-11e8-971a-e1389478a61f.PNG">
     
 
     
@@ -141,14 +143,14 @@
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-filename-case" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-servletEx-member" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        HTML 파일명의 대소문자만 바꾸는 경우
+        MVC예제 - 간단한 회원가입
         </h1>
     
 
@@ -158,8 +160,8 @@
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/08/27/filename-case/" class="article-date">
-            <time datetime="2018-08-27T14:52:40.000Z" itemprop="datePublished">2018-08-27</time>
+        <a href="/2018/09/12/servletEx-member/" class="article-date">
+            <time datetime="2018-09-12T12:27:38.000Z" itemprop="datePublished">2018-09-12</time>
         </a>
     </div>
 
@@ -168,8 +170,26 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>※ 사소주의<br>톰캣의 배포과정에서는 대소문자 구분을 하지않기 때문에 단순히 대소문자만 바꿔서 저장하면 인식을 못하는 경우가 있다.(파일을 못찾음)<br>배포할때 이미 파일이  존재한다고 인지해서 바뀐 파일명에 대한 파일을 처리해주지 않는다.<br>하지만 인식과정에서는 대소문자 구분을 해주기 때문에 당연히 해당 파일이 존재하지 않는다고 처리된다.</p>
-<p>-&gt; 해결방법: 다른 문자 추가해서 바꿨다가 다시 대소문자 바꾼 파일명으로 2번에 걸친 과정으로 바꿔준다.</p>
+            <p>MVC 패턴을 이용한 간단한 회원가입 기능을 구현해보고자 한다.</p>
+<p>아래는 프로젝트 구조이다.<br>이번에는 service를 추가해서 구현하였다. (이전 버전은 블로그에 정리해두지 않았다)</p>
+<p>[구조]</p>
+<ul>
+<li><p>Controller<br>: MemberController.java - Servlet Class</p>
+</li>
+<li><p>DAO<br>: MemberDao.java - Interface<br>: MemberDaoImpl.java - Class</p>
+</li>
+<li><p>DBUtil<br>: DBConn.java - Class</p>
+</li>
+<li><p>DTO<br>: Member.java - Class</p>
+</li>
+<li><p>Service<br>: MemberService - Interface<br>: MemberServiceImpl - Class</p>
+</li>
+<li><p>VIEW<br>: joinForm.jsp - JSP<br>: result.jsp - JSP</p>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/42576587/45753982-59d25a00-bc55-11e8-971a-e1389478a61f.PNG" alt=""></p>
+<p><hr><br><strong>[구현 코드]</strong></p>
+<figure class="highlight java"><figcaption><span>MemberController.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> dto.Member;</span><br><span class="line"><span class="keyword">import</span> service.MemberService;</span><br><span class="line"><span class="keyword">import</span> service.MemberServiceImpl;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/member/join"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MemberController</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MemberService memberService = <span class="keyword">new</span> MemberServiceImpl();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// VIEW 지정</span></span><br><span class="line">        req.getRequestDispatcher(<span class="string">"/view/member/joinForm.jsp"</span>).forward(req, resp);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 요청파라미터 한글 처리 인코딩 설정 (UTF-8)</span></span><br><span class="line">        req.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Service를 통한 요청파라미터처리</span></span><br><span class="line">        Member mem = memberService.getMemberParameter(req, resp);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Service를 통한 회원가입(데이터베이스 삽입)</span></span><br><span class="line">        <span class="keyword">boolean</span> joinResult = memberService.join(mem);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// join결과 request에 담기</span></span><br><span class="line">        <span class="comment">//	VIEW에 전달할 MODEL값을 담기</span></span><br><span class="line">        req.setAttribute(<span class="string">"joinResult"</span>, joinResult);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VIEW 지정하기</span></span><br><span class="line">        req.getRequestDispatcher(<span class="string">"/view/member/result.jsp"</span>).forward(req, resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -177,7 +197,7 @@
 
 
 
-    <a data-url="http://yoursite.com/2018/08/27/filename-case/" data-id="cjmlc7fgg000a4ouqcf9etysd" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://yoursite.com/2018/09/12/servletEx-member/" data-id="cjmlc7fi1001k4ouqeti0fy3d" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -314,20 +334,20 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/08/27/setting-encode/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/09/13/jsp-implict-object/" id="article-nav-newer" class="article-nav-link-wrap">
         <strong class="article-nav-caption">새로운</strong>
         <p class="article-nav-title">
         
-            이클립스 한글 인코딩(UTF-8) 환경 설정
+            JSP 내장 객체
         
         </p>
         <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
     </a>
     
     
-        <a href="/2018/08/27/web-modules/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/09/12/jsp-basic-tag/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">오래된</strong>
-        <p class="article-nav-title">Dynamic Web Project와 서버 연결하기</p>
+        <p class="article-nav-title">JSP 기본 태그</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -486,7 +506,7 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'http://yoursite.com/2018/08/27/filename-case/';
+    var disqus_url = 'http://yoursite.com/2018/09/12/servletEx-member/';
     
     (function() {
     var dsq = document.createElement('script');
