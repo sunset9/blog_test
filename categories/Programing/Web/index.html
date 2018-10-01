@@ -158,6 +158,105 @@
             <div class="category">
             <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
             </div>
+            <div class="date"><time datetime="2018-10-01T13:34:08.000Z" itemprop="datePublished">2018-10-01</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/10/01/filedownload/">파일 다운로드</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            이전에는 파일 업로드하는 부분을 구현해봤으니이번에는 서버에 업로드된 파일을 다운로드하는 파트를 구현해보았다.
+선처리[DB]아래와 같이 DB 테이블을 생성해두고, 이전에 파일 업로드를 구현하면서 업로드 로그를 해당 테이블에 삽입해두었다.
+
+[DTO]DB구조와 동일하게 작성
+[DAO]적당히 구현
+[VIEW]1.업로드된 파일의 리스트를 뿌려준다.2.해당 파일명을
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
+            </div>
+            <div class="date"><time datetime="2018-10-01T13:25:35.000Z" itemprop="datePublished">2018-10-01</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/10/01/fileupload-02/">파일 업로드 (COS Lib활용)</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            commons 라이브러리보다 훨씬 쉽게 구현이 가능하다.우선 세팅해줘야 하는 값들이 별로 없고, MultipartRequest 객체를 생성하는 걸로 파일 업로드 처리가끝난다.
+VIEW이전 포스팅과 동일하게 구현
+SERVLETFileUploadCosServlet.java12345678910111213141516171819202122232425262728293
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
+            </div>
+            <div class="date"><time datetime="2018-10-01T00:30:39.000Z" itemprop="datePublished">2018-10-01</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/10/01/cos-library-upload/">COS 라이브러리 - MultipartRequest객체</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            COS라이브러리를 활용해 파일 업로드를 구현하기 전에COS라이브러리에서 사용할 MultipartRequest 객체에 대해 알아보도록 하자.
+COS 라이브러리 파일 업로드
+com.oreilly.servlet.MultipartRequest 객체 이용
+
+객체의 생성자를 통해 업로드 제한 설정을 한다
+
+
+MultipartRequest 생성자123456789publ
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
+            </div>
             <div class="date"><time datetime="2018-09-28T06:55:38.000Z" itemprop="datePublished">2018-09-28</time></div>
         </div>
         
@@ -177,10 +276,14 @@ fileUpload.jsp12345678910111213141516171819202122232425&lt;%@ page language="jav
     </div>
 </article>
     
+        </div>
+    
 
     
     
     
+    
+        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -194,31 +297,24 @@ fileUpload.jsp12345678910111213141516171819202122232425&lt;%@ page language="jav
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/09/28/fileupload-00/">파일 업로드를 위한 환경 세팅</a>
+        <a href="/2018/09/28/fileupload-00/">파일 업로드를 위한 2가지 라이브러리 &amp; 환경 세팅</a>
         </h1>
     
 
         <p class="article-excerpt">
-             파일 업로드 라이브러리를 활용하는 2가지 방법이 있다.
+             파일 업로드 라이브러리를 활용하는 2가지 방법이 있다.COS라이브러리가 사용엔 더 간편하지만, commons 라이브러리가 더 범용적으로 쓰인다고 한다.
 1. commons-fileupload 라이브러리 + Commons-io 라이브러리(같이 필요) [commons-fileupload 다운방법]
 
-apache.org 접속
-상단 메뉴 Projects 클릭
-Commons 링크 찾아서 클릭
-Fileupload 링크 찾아서 클릭
-왼쪽 메뉴 Download 클
+www.apache.org 접속
+상단 메뉴 Projects 
         </p>
     </div>
 </article>
     
-        </div>
-    
 
     
     
     
-    
-        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -242,6 +338,42 @@ Fileupload 링크 찾아서 클릭
 
 요청 라인(스타트 라인)메소드(GET, POST)URLHTTP 버전(HTTP/1.0, HTTP/1.1(우리는 이 버전을 쓴다))
 요청 헤더 : 키-값 쌍으로 들어감Accept : 클라이언트가 받아들일 수 있는 형태Cookie : 쿠키정보Content-Type : 메시지 바디 타입Content-Length : 메
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
+            </div>
+            <div class="date"><time datetime="2018-09-27T14:14:30.000Z" itemprop="datePublished">2018-09-27</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/27/paging/">페이징 처리</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Paging 활용
+
+Paging객체 안의 페이징관련 변수들을 통해 DB에서 조회 범위를 설정해준다.-&gt; 설정된 범위까지만 조회해서 View에 넘겨줌
+View에서 Pagination(맨 아래에 페이지번호,이동화살표 표시해주는 것)을 구현할 때 사용한다.
+
+Controller123456789101112131415161718192021222324252627
         </p>
     </div>
 </article>
@@ -312,11 +444,11 @@ public 클래스로 생성한다
         <p class="article-excerpt">
             MVC 패턴을 이용한 간단한 회원가입 기능을 구현해보고자 한다.
 아래는 프로젝트 구조이다.이번에는 service를 추가해서 구현하였다. (이전 버전은 블로그에 정리해두지 않았다)
-[구조]
 
-Controller: MemberController.java - Servlet Class
-
-DAO: MemberDao.java - Interface: MemberDaoI
+Service 단이 해주는 역할:
+Service는 Controller의 역할 중 일부를 담당하는 객체임
+Service는 Controller의 비지니스로직을 담당하는 계층
+Serv
         </p>
     </div>
 </article>
@@ -363,105 +495,14 @@ ex
         </div>
     
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
-            </div>
-            <div class="date"><time datetime="2018-08-27T14:52:40.000Z" itemprop="datePublished">2018-08-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/filename-case/">HTML 파일명의 대소문자만 바꾸는 경우</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            ※ 사소주의톰캣의 배포과정에서는 대소문자 구분을 하지않기 때문에 단순히 대소문자만 바꿔서 저장하면 인식을 못하는 경우가 있다.(파일을 못찾음)배포할때 이미 파일이  존재한다고 인지해서 바뀐 파일명에 대한 파일을 처리해주지 않는다.하지만 인식과정에서는 대소문자 구분을 해주기 때문에 당연히 해당 파일이 존재하지 않는다고 처리된다.
--&gt; 해결방법: 다른 문
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
-            </div>
-            <div class="date"><time datetime="2018-08-27T14:01:41.000Z" itemprop="datePublished">2018-08-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/web-modules/">Dynamic Web Project와 서버 연결하기</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            Dynamic Web Project를 서버에서 실행시키기 위해서 서버와 프로젝트를 연결시켜줘야 한다.
-방법1.
-Server 뷰에서 원하는 톰캣 서버를 우클릭하여 ‘Add and Remove’ 을 누른다.
-후에 원하는 프로젝트를 ‘Add’ 해준다. (Front라는 이름의 프로젝트이다.)
-방법2.Server 뷰에서 원하는 톰캣 서버를 더블클릭한다.노란색 박스로
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a>
-            </div>
-            <div class="date"><time datetime="2018-08-27T12:45:43.000Z" itemprop="datePublished">2018-08-27</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/27/install-tomcat/">톰캣 설치 및 적용</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            톰캣 서버를 설치하고 이클립스에 올려 실행하고자 한다.기존에 이클립스를 Standard 버전을 쓰고 있었는데 해당 버전은 웹 프로젝트에 대한 지원이 안되기 때문에 톰캣 설치에 앞서 우선 이클립스 EE 버전을 새로 설치하려고 한다.
-
-Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 있으면 선택해서 upd
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
 
     </div></section>
 
+
+    <nav id="page-nav">
+        <span class="pages">Page 1 of 2</span>
+        <span class="page-number current">1</span><a class="page-number" href="/categories/Programing/Web/page/2/">2</a><a class="extend next" rel="next" href="/categories/Programing/Web/page/2/">&raquo;</a>
+    </nav>
 
 
 
@@ -540,6 +581,33 @@ Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/10/01/filedownload/" class="title">파일 다운로드</a></p>
+                            <p class="item-date"><time datetime="2018-10-01T13:34:08.000Z" itemprop="datePublished">2018-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/10/01/fileupload-02/" class="title">파일 업로드 (COS Lib활용)</a></p>
+                            <p class="item-date"><time datetime="2018-10-01T13:25:35.000Z" itemprop="datePublished">2018-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/10/01/cos-library-upload/" class="title">COS 라이브러리 - MultipartRequest객체</a></p>
+                            <p class="item-date"><time datetime="2018-10-01T00:30:39.000Z" itemprop="datePublished">2018-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
                             <p class="item-title"><a href="/2018/09/28/fileupload-01/" class="title">파일 업로드 (Commons-fileupload Lib활용)</a></p>
                             <p class="item-date"><time datetime="2018-09-28T06:55:38.000Z" itemprop="datePublished">2018-09-28</time></p>
                         </div>
@@ -549,35 +617,8 @@ Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/09/28/fileupload-00/" class="title">파일 업로드를 위한 환경 세팅</a></p>
+                            <p class="item-title"><a href="/2018/09/28/fileupload-00/" class="title">파일 업로드를 위한 2가지 라이브러리 &amp; 환경 세팅</a></p>
                             <p class="item-date"><time datetime="2018-09-28T06:50:56.000Z" itemprop="datePublished">2018-09-28</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/09/28/http-Protocol/" class="title">HTTP Protocol</a></p>
-                            <p class="item-date"><time datetime="2018-09-28T01:29:06.000Z" itemprop="datePublished">2018-09-28</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/JDBC/">JDBC</a></p>
-                            <p class="item-title"><a href="/2018/09/19/ready-jdbc/" class="title">JDBC 사전 준비</a></p>
-                            <p class="item-date"><time datetime="2018-09-19T06:46:12.000Z" itemprop="datePublished">2018-09-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
-                            <p class="item-title"><a href="/2018/09/14/javabean/" class="title">자바빈</a></p>
-                            <p class="item-date"><time datetime="2018-09-14T07:57:11.000Z" itemprop="datePublished">2018-09-14</time></p>
                         </div>
                     </li>
                 
@@ -590,7 +631,7 @@ Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">카테고리</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">30</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">3</span></li></ul></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">3</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -600,7 +641,7 @@ Eclipse IDE for Java EE Developers 다운로드-&gt; 오른쪽 위에 ! 가 떠 
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">아카이브</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
         </div>
     </div>
 

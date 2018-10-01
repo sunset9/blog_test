@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">	
+	<link rel="stylesheet" href="/css/style.css">
+	
+    
+
+    
+    <title>페이징 처리 | Don&#39;t forget</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="Paging 활용  Paging객체 안의 페이징관련 변수들을 통해 DB에서 조회 범위를 설정해준다.-&amp;gt; 설정된 범위까지만 조회해서 View에 넘겨줌 View에서 Pagination(맨 아래에 페이지번호,이동화살표 표시해주는 것)을 구현할 때 사용한다.  Controller123456789101112131415161718192021222324252627">
+<meta property="og:type" content="article">
+<meta property="og:title" content="페이징 처리">
+<meta property="og:url" content="http://yoursite.com/2018/09/27/paging/index.html">
+<meta property="og:site_name" content="Don&#39;t forget">
+<meta property="og:description" content="Paging 활용  Paging객체 안의 페이징관련 변수들을 통해 DB에서 조회 범위를 설정해준다.-&amp;gt; 설정된 범위까지만 조회해서 View에 넘겨줌 View에서 Pagination(맨 아래에 페이지번호,이동화살표 표시해주는 것)을 구현할 때 사용한다.  Controller123456789101112131415161718192021222324252627">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-10-01T14:30:11.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="페이징 처리">
+<meta name="twitter:description" content="Paging 활용  Paging객체 안의 페이징관련 변수들을 통해 DB에서 조회 범위를 설정해준다.-&amp;gt; 설정된 범위까지만 조회해서 View에 넘겨줌 View에서 Pagination(맨 아래에 페이지번호,이동화살표 표시해주는 것)을 구현할 때 사용한다.  Controller123456789101112131415161718192021222324252627">
+    
+
+    
+        <link rel="alternate" href="/" title="Don&#39;t forget" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">lazy</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/jQuery/">jQuery</a></li></ul></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programing/Web/">Web</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-paging" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        페이징 처리
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/09/27/paging/" class="article-date">
+            <time datetime="2018-09-27T14:14:30.000Z" itemprop="datePublished">2018-09-27</time>
+        </a>
+    </div>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Paging 활용</p>
+<ul>
+<li>Paging객체 안의 페이징관련 변수들을 통해 DB에서 조회 범위를 설정해준다.<br>-&gt; 설정된 범위까지만 조회해서 View에 넘겨줌</li>
+<li>View에서 Pagination(맨 아래에 페이지번호,이동화살표 표시해주는 것)을 구현할 때 사용한다.</li>
+</ul>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> controller.board;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/board/paginglist"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoardPagingListController</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    BoardService bservice = <span class="keyword">new</span> BoardServiceImpl();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 현재 페이지 번호 얻기</span></span><br><span class="line">        <span class="keyword">int</span> curPage = bservice.getCurPage(req);</span><br><span class="line">        <span class="comment">// 페이징 객체</span></span><br><span class="line">        <span class="keyword">int</span> totalCount = bservice.getTotalCount();</span><br><span class="line">        Paging paging = <span class="keyword">new</span> Paging(totalCount, curPage);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 게시글 목록 얻기</span></span><br><span class="line">        List&lt;Board&gt; boardList = bservice.getPagingList(paging);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 게시글목록 MODEL로 추가</span></span><br><span class="line">        req.setAttribute(<span class="string">"boardList"</span>, boardList);</span><br><span class="line">        <span class="comment">// 페이징 객체 MODEL로 추가</span></span><br><span class="line">        req.setAttribute(<span class="string">"paging"</span>, paging);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// VIEW 지정</span></span><br><span class="line">        req.getRequestDispatcher(<span class="string">"/view/board/list.jsp"</span>).forward(req, resp);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Paging-java"><a href="#Paging-java" class="headerlink" title="Paging.java"></a>Paging.java</h2><ul>
+<li>util 폴더에 넣어서 관리<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Paging</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> curPage;	<span class="comment">//현재 페이지 번호 (현재 선택한 페이지)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalCount;	<span class="comment">//총 게시글 수 (DB 조회 결과로 얻어옴)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> listCount;	<span class="comment">//한 페이지당 출력될 게시글 수 (직접 설정함)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> totalPage;	<span class="comment">//총 페이지 수 (계산으로 알아냄)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> pageCount;	<span class="comment">//한 화면에 출력될 페이지 수 (직접 설정함)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> startPage;	<span class="comment">//화면에 보이는 시작 페이지 (계산으로 알아냄)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> endPage;	<span class="comment">//화면에 보이는 끝 페이지 (계산으로 알아냄)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> startNo;	<span class="comment">//게시물리스트 첫 번호</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> endNo;	<span class="comment">//게시물리스트 마지막 번호</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 총 게시글 수만 입력하는 생성자</span></span><br><span class="line">    <span class="comment">//	curPage == 1</span></span><br><span class="line">    <span class="comment">//	pageCount == 10</span></span><br><span class="line">    <span class="comment">//	listCount == 10</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Paging</span><span class="params">(<span class="keyword">int</span> totalCount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setTotalCount(totalCount);</span><br><span class="line"></span><br><span class="line">        makePaging();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 총 게시글 수와 현재 페이지를 입력하는 생성자</span></span><br><span class="line">    <span class="comment">//	pageCount == 10</span></span><br><span class="line">    <span class="comment">//	listCount == 10</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Paging</span><span class="params">(<span class="keyword">int</span> totalCount, <span class="keyword">int</span> curPage)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setTotalCount(totalCount);</span><br><span class="line">        <span class="keyword">this</span>.setCurPage(curPage);</span><br><span class="line"></span><br><span class="line">        makePaging();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 총 게시글 수와 현재 페이지, 보여지는 게시글 수를 입력하는 생성자</span></span><br><span class="line">    <span class="comment">//	pageCount == 10</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Paging</span><span class="params">(<span class="keyword">int</span> totalCount, <span class="keyword">int</span> curPage, <span class="keyword">int</span> listCount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setTotalCount(totalCount);</span><br><span class="line">        <span class="keyword">this</span>.setCurPage(curPage);</span><br><span class="line">        <span class="keyword">this</span>.setListCount(listCount);</span><br><span class="line"></span><br><span class="line">        makePaging();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 총 게시글 수와 현재 페이지, 보여지는 게시글 수, 페이지 수를 입력하는 생성자</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Paging</span><span class="params">(<span class="keyword">int</span> totalCount, <span class="keyword">int</span> curPage, <span class="keyword">int</span> listCount, <span class="keyword">int</span> pageCount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.setTotalCount(totalCount);</span><br><span class="line">        <span class="keyword">this</span>.setCurPage(curPage);</span><br><span class="line">        <span class="keyword">this</span>.setListCount(listCount);</span><br><span class="line">        <span class="keyword">this</span>.setPageCount(pageCount);</span><br><span class="line"></span><br><span class="line">        makePaging();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 페이징 정보 생성</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">makePaging</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(totalCount == <span class="number">0</span>)	<span class="keyword">return</span>; <span class="comment">//게시글이 없는 경우</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 기본값 설정</span></span><br><span class="line">        <span class="keyword">if</span>(curPage == <span class="number">0</span>)	setCurPage(<span class="number">1</span>);	<span class="comment">//기본값으로 첫 페이지(1) 세팅</span></span><br><span class="line">        <span class="keyword">if</span>(pageCount == <span class="number">0</span>)	setPageCount(<span class="number">10</span>); <span class="comment">//한 화면에 보이는 페이지수 기본값(10) 세팅</span></span><br><span class="line">        <span class="keyword">if</span>(listCount == <span class="number">0</span>)	setListCount(<span class="number">10</span>); <span class="comment">//한 화면에 보이는 게시글수 기본값(10) 세팅</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 총 페이지수 계산</span></span><br><span class="line">        totalPage = totalCount / listCount;</span><br><span class="line">        <span class="keyword">if</span>( totalCount % listCount &gt; <span class="number">0</span> )	totalPage++;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 현재 페이지가 총 페이지보다 크게 입력되면</span></span><br><span class="line">        <span class="comment">// 강제로 마지막페이지 고정</span></span><br><span class="line">        <span class="keyword">if</span> (totalPage &lt; curPage)	curPage = totalPage;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 화면에 보일 시작 페이지 &amp; 끝 페이지 설정</span></span><br><span class="line">        <span class="comment">// 		pageCount 단위로 끊어서 표시</span></span><br><span class="line"><span class="comment">//		startPage = ((curPage-1)/pageCount)*pageCount+1;</span></span><br><span class="line"><span class="comment">//		endPage = startPage+pageCount-1;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 화면에 보일 시작 페이지 &amp; 끝 페이지 설정</span></span><br><span class="line">        <span class="comment">// 		앞에 5개, 뒤에 4개 보이도록(현재 페이지 중앙 정렬) 표시</span></span><br><span class="line">        startPage = curPage -<span class="number">5</span>;</span><br><span class="line">        endPage = curPage + <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">if</span>(startPage &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            startPage = <span class="number">1</span>;</span><br><span class="line">            endPage = pageCount;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 계산된 마지막 페이지가 totalPage보다 커질 경우</span></span><br><span class="line">        <span class="comment">// 강제로 최종 페이지까지만 보이도록 설정</span></span><br><span class="line">        <span class="keyword">if</span>(endPage &gt; totalPage)	endPage = totalPage;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 게시글 시작번호</span></span><br><span class="line">        startNo = (curPage-<span class="number">1</span>)*listCount+<span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 게시글 끝번호</span></span><br><span class="line">        endNo = curPage*listCount;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// getter/setter 구현</span></span><br><span class="line"><span class="comment">// toString() 구현</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> util.Paging;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BoardServiceImpl</span> <span class="keyword">implements</span> <span class="title">BoardService</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    BoardDao bDao = <span class="keyword">new</span> BoardDaoImpl();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 게시글 페이징 조회</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Board&gt; <span class="title">getPagingList</span><span class="params">(Paging paging)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bDao.selectPagingList(paging);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 요청파라미터에서 curPage 반환</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCurPage</span><span class="params">(HttpServletRequest req)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//요청 파라미터 받기</span></span><br><span class="line">        String curPage = req.getParameter(<span class="string">"curPage"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// null이나 ""이 아니면 int로 리턴</span></span><br><span class="line">        <span class="keyword">if</span>(curPage !=<span class="keyword">null</span> &amp;&amp; !<span class="string">""</span>.equals(curPage)) &#123;</span><br><span class="line">            <span class="keyword">return</span> Integer.parseInt(curPage);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//null이나 ""면 0으로 반환</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 전체 게시글 수 조회</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getTotalCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bDao.selectCntAll();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><figure class="highlight jsp"><figcaption><span>list.jsp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line"></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">&lt;h2 style="float: left;"&gt; 게시판 목록&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">&lt;table <span class="class"><span class="keyword">class</span></span>=<span class="string">"table table-striped"</span>&gt;</span><br><span class="line">&lt;thead&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;th style="width: 10%"&gt;게시판 번호&lt;/th&gt;</span><br><span class="line">    &lt;th style="width: 40%"&gt;게시판 제목&lt;/th&gt;</span><br><span class="line">    &lt;th style="width: 20%"&gt;작성자&lt;/th&gt;</span><br><span class="line">    &lt;th style="width: 10%"&gt;조회수&lt;/th&gt;</span><br><span class="line">    &lt;th style="width: 20%"&gt;작성일&lt;/th&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/thead&gt;</span><br><span class="line"></span><br><span class="line">&lt;tbody&gt;</span><br><span class="line">&lt;c:forEach var=<span class="string">"board"</span> items=<span class="string">"$&#123;boardList &#125;"</span>&gt;</span><br><span class="line">&lt;tr&gt;</span><br><span class="line">    &lt;td&gt;$&#123;board.boardno&#125; &lt;/td&gt;</span><br><span class="line">    &lt;td&gt;&lt;a href="/board/view?boardno=$&#123;board.boardno&#125;&amp;curPage=$&#123;paging.curPage&#125;"&gt;$&#123;board.title&#125;&lt;/a&gt;&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;$&#123;board.writer&#125; &lt;/td&gt;</span><br><span class="line">    &lt;td&gt;$&#123;board.hit&#125; &lt;/td&gt;</span><br><span class="line">    &lt;td&gt;$&#123;board.writtendate&#125; &lt;/td&gt;</span><br><span class="line">&lt;/tr&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;/tbody&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line"></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"text-center"</span>&gt;</span><br><span class="line">  &lt;ul <span class="class"><span class="keyword">class</span></span>=<span class="string">"pagination"</span>&gt;</span><br><span class="line">  	&lt;!-- 처음으로 가기 --&gt;</span><br><span class="line">  	&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage ne 1 &#125;"</span>&gt;</span><br><span class="line">  	&lt;li&gt;</span><br><span class="line">      &lt;a href=<span class="string">"/board/paginglist"</span> aria-label=<span class="string">"Previous"</span>&gt;</span><br><span class="line">        &lt;span aria-hidden="true"&gt;처음&lt;/span&gt;</span><br><span class="line">      &lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;/c:if&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 이전 페이지 --&gt;</span><br><span class="line">    &lt;!-- 첫 페이지라면 버튼 동작 안되게 만들기 --&gt;</span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage eq 1 &#125;"</span>&gt;</span><br><span class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"disabled"</span>&gt;</span><br><span class="line">       &lt;span aria-hidden="true"&gt;&amp;laquo;&lt;/span&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;/c:if&gt;</span><br><span class="line"></span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage ne 1 &#125;"</span>&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &lt;a href=<span class="string">"/board/paginglist?curPage=$&#123;paging.curPage-1 &#125;"</span> aria-label=<span class="string">"Previous"</span>&gt;</span><br><span class="line">        &lt;span aria-hidden="true"&gt;&amp;laquo;&lt;/span&gt;</span><br><span class="line">      &lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;/c:if&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 페이징 리스트 --&gt;</span><br><span class="line">    &lt;c:forEach var=<span class="string">"i"</span> begin=<span class="string">"$&#123;paging.startPage &#125;"</span> end=<span class="string">"$&#123;paging.endPage &#125;"</span> step=<span class="string">"1"</span>&gt;</span><br><span class="line">    	&lt;!-- 현재 보고 있는 페이지 번호만 강조하기 --&gt;</span><br><span class="line">    	&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage eq i&#125;"</span>&gt;</span><br><span class="line">    		&lt;li class="active"&gt;&lt;a href="/board/paginglist?curPage=$&#123;i &#125;"&gt;$&#123;i &#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    	&lt;/c:if&gt;</span><br><span class="line">    	&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage ne i&#125;"</span>&gt;</span><br><span class="line">    		&lt;li&gt;&lt;a href="/board/paginglist?curPage=$&#123;i &#125;"&gt;$&#123;i &#125;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">    	&lt;/c:if&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 다음 페이지 --&gt;</span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage eq paging.totalPage&#125;"</span>&gt;</span><br><span class="line">    &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"disabled"</span>&gt;</span><br><span class="line">       &lt;span aria-hidden="true"&gt;&amp;raquo;&lt;/span&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;/c:if&gt;</span><br><span class="line">    &lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;paging.curPage ne paging.totalPage&#125;"</span>&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &lt;a href=<span class="string">"/board/paginglist?curPage=$&#123;paging.curPage+1 &#125;"</span> aria-label=<span class="string">"Next"</span>&gt;</span><br><span class="line">        &lt;span aria-hidden="true"&gt;&amp;raquo;&lt;/span&gt;</span><br><span class="line">      &lt;/a&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;/c:if&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yoursite.com/2018/09/27/paging/" data-id="cjmqe5pc7001rbguq9cuyem11" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/09/28/http-Protocol/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            HTTP Protocol
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/09/19/ready-jdbc/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">JDBC 사전 준비</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/10/01/filedownload/" class="title">파일 다운로드</a></p>
+                            <p class="item-date"><time datetime="2018-10-01T13:34:08.000Z" itemprop="datePublished">2018-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/10/01/fileupload-02/" class="title">파일 업로드 (COS Lib활용)</a></p>
+                            <p class="item-date"><time datetime="2018-10-01T13:25:35.000Z" itemprop="datePublished">2018-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/10/01/cos-library-upload/" class="title">COS 라이브러리 - MultipartRequest객체</a></p>
+                            <p class="item-date"><time datetime="2018-10-01T00:30:39.000Z" itemprop="datePublished">2018-10-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/09/28/fileupload-01/" class="title">파일 업로드 (Commons-fileupload Lib활용)</a></p>
+                            <p class="item-date"><time datetime="2018-09-28T06:55:38.000Z" itemprop="datePublished">2018-09-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/09/28/fileupload-00/" class="title">파일 업로드를 위한 2가지 라이브러리 &amp; 환경 세팅</a></p>
+                            <p class="item-date"><time datetime="2018-09-28T06:50:56.000Z" itemprop="datePublished">2018-09-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">34</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">3</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/">DAO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTO/">DTO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PreparedStatement/">PreparedStatement</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton/">Singleton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/DAO/" style="font-size: 20px;">DAO</a> <a href="/tags/DTO/" style="font-size: 20px;">DTO</a> <a href="/tags/PreparedStatement/" style="font-size: 10px;">PreparedStatement</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Hae Jin</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yoursite.com/2018/09/27/paging/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
