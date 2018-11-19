@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">	
+	<link rel="stylesheet" href="/css/style.css">
+	
+    
+
+    
+    <title>AJAX / XHR 객체 | Don&#39;t forget</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="AJAX, Asyschronous JavaScript + XML 비동기식 자바 스크립트 with XML JSON : JavaScript Object Notation : 자바스크립트 객체 표기법  자바스크립트 기반의 XML을 이용한 비동기 HTTP통신  자바스크립트로 HTTP 요청을 보내고 XML로 응답을 받는 기술** 요즘엔 XML 대신 JSON을 사용한다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AJAX &#x2F; XHR 객체">
+<meta property="og:url" content="http://yoursite.com/2018/11/01/ajax-xhr/index.html">
+<meta property="og:site_name" content="Don&#39;t forget">
+<meta property="og:description" content="AJAX, Asyschronous JavaScript + XML 비동기식 자바 스크립트 with XML JSON : JavaScript Object Notation : 자바스크립트 객체 표기법  자바스크립트 기반의 XML을 이용한 비동기 HTTP통신  자바스크립트로 HTTP 요청을 보내고 XML로 응답을 받는 기술** 요즘엔 XML 대신 JSON을 사용한다">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-11-19T11:05:43.658Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AJAX &#x2F; XHR 객체">
+<meta name="twitter:description" content="AJAX, Asyschronous JavaScript + XML 비동기식 자바 스크립트 with XML JSON : JavaScript Object Notation : 자바스크립트 객체 표기법  자바스크립트 기반의 XML을 이용한 비동기 HTTP통신  자바스크립트로 HTTP 요청을 보내고 XML로 응답을 받는 기술** 요즘엔 XML 대신 JSON을 사용한다">
+    
+
+    
+        <link rel="alternate" href="/" title="Don&#39;t forget" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">lazy</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/jQuery/">jQuery</a></li></ul></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programing/Web/">Web</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-ajax-xhr" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        AJAX / XHR 객체
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/01/ajax-xhr/" class="article-date">
+            <time datetime="2018-11-01T10:57:45.000Z" itemprop="datePublished">2018-11-01</time>
+        </a>
+    </div>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h2 id="AJAX-Asyschronous-JavaScript-XML"><a href="#AJAX-Asyschronous-JavaScript-XML" class="headerlink" title="AJAX, Asyschronous JavaScript + XML"></a>AJAX, Asyschronous JavaScript + XML</h2><ul>
+<li>비동기식 자바 스크립트 with XML</li>
+<li><p>JSON : JavaScript Object Notation : 자바스크립트 객체 표기법</p>
+</li>
+<li><p>자바스크립트 기반의 XML을 이용한 비동기 HTTP통신</p>
+</li>
+<li><p>자바스크립트로 HTTP 요청을 보내고 XML로 응답을 받는 기술<br>** 요즘엔 XML 대신 JSON을 사용한다</p>
+</li>
+<li><p>요청보내기, 응답받기 모두 자바스크립트 코드로 작성해야 한다</p>
+</li>
+<li>XMLHttpRequest(XHR) 자바스크립트 내장 객체를 이용한다</li>
+</ul>
+<h3 id="Ajax-동작-순서"><a href="#Ajax-동작-순서" class="headerlink" title="Ajax 동작 순서"></a>Ajax 동작 순서</h3><ol>
+<li>XMLHttpRequest 객체를 이용한 요청(Request)</li>
+<li>서버로부터 보내진 XML문서(JSON데이터)를 응답(Response) 받음</li>
+</ol>
+<ul>
+<li>XHR 객체가 받는다</li>
+</ul>
+<ol start="3">
+<li>자바스크립트(jQuery)코드를 이용한 응답 데이터 처리</li>
+</ol>
+<ul>
+<li>브라우저 화면에 반영한다</li>
+</ul>
+<hr>
+
+<h3 id="XHR-객체-속성-property"><a href="#XHR-객체-속성-property" class="headerlink" title="XHR 객체 속성(property)"></a>XHR 객체 속성(property)</h3><ul>
+<li><p>readyState<br>: XHR 객체는 준비-전송-완료 단계를 거친다.</p>
+<ul>
+<li><p>readyState는 각 단계를 나타내는 코드</p>
+<ul>
+<li>0 : UNSENT - open() 호출 전 (객체만 생성한 단계)</li>
+<li>1 : OPENED - open() 호출 후 응답받기 전</li>
+<li>2 : HEADERS_RECEIVED - send() 호출, 응답받기 전</li>
+<li>3 : LOADING - 다운로드 중(response 받는 중간)</li>
+<li>4 : DONE - XHR동작(요청,응답) 완료</li>
+</ul>
+<p>** LOADING 상태 돌입하면서 XHR.onprogress 이벤트가 발생한다<br>** DONE 상태 시 XHR.onload 이벤트가 발생한다</p>
+</li>
+</ul>
+</li>
+<li><p>onreadystatechange<br>: readyState가 변경될 때마다 발생하는 이벤트 처리 코드<br>callback 형태로 함수를 지정한다</p>
+</li>
+<li><p>responseText<br>: 응답데이터를 String 타입으로 추출하는 속성</p>
+</li>
+<li><p>responseXML<br>: 응답데이터를 XML객체 타입으로 추출하는 속성</p>
+</li>
+<li><p>status<br>: HTTP 응답 상태 코드<br>readyState:DONE 이후 응답상태에 따른 처리 설정 시 이용</p>
+</li>
+<li><p>statusText<br>: HTTP 응답 상태 메세지<br>ex) 404. Not Found.</p>
+</li>
+</ul>
+<h3 id="XHR-객체-함수"><a href="#XHR-객체-함수" class="headerlink" title="XHR 객체 함수"></a>XHR 객체 함수</h3><ul>
+<li><p>void open(String method, String url, [, booleand asynch]);<br>: 요청 초기화</p>
+<ul>
+<li>요청 정보 설정 함수<ul>
+<li>method : HTTP 요청 메소드 (GET, POST)</li>
+<li>url : 접속 URL</li>
+<li>asynch : 동기(false), 비동기(true) 설정 [기본값 : true]<br>** asynch를 동기(false)로 설정하면 요청에 대한 응답이 완료될 때까지 대기상태(BLOCKED)가 된다<br>** url은 같은 도메인이어야 한다<br>localhost:8088에서 요청하면 같은 localhost:8088에만 요청을 보내야한다 (cross-domain issue)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>void send(null);<br>: GET 요청 전송 함수 (url에 쿼리스트링을 추가한다)</p>
+</li>
+<li><p>void send(params);<br>: POST 요청 전송 함수<br>params에 쿼리스트링 형식의 문자열을 추가한다</p>
+</li>
+</ul>
+<p>(select 문만 쓸 것같다 -&gt; GET 방식)<br>(update, insert, delete를 쓸 것 같다 -&gt; POST 방식을 쓰는게 일반적)</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yoursite.com/2018/11/01/ajax-xhr/" data-id="cjoo74ull003fi4uq86un4gm4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/11/02/marshalling/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            마샬링, 언마샬링
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/10/01/filedownload/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">파일 다운로드</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2018/11/14/di/" class="title">의존성 주입</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T14:21:00.000Z" itemprop="datePublished">2018-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2018/11/13/setup-Spring/" class="title">스프링 설치 &amp; 환경 구축</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T13:19:47.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/11/13/invalid-LOC-header/" class="title">invalid LOC header 에러 해결</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T13:11:36.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a></p>
+                            <p class="item-title"><a href="/2018/11/03/jquery-ajax/" class="title">jQuery를 이용한 Ajax</a></p>
+                            <p class="item-date"><time datetime="2018-11-03T11:09:53.000Z" itemprop="datePublished">2018-11-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/11/02/marshalling/" class="title">마샬링, 언마샬링</a></p>
+                            <p class="item-date"><time datetime="2018-11-02T11:06:46.000Z" itemprop="datePublished">2018-11-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">4</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/">DAO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTO/">DTO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PreparedStatement/">PreparedStatement</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton/">Singleton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/DAO/" style="font-size: 20px;">DAO</a> <a href="/tags/DTO/" style="font-size: 20px;">DTO</a> <a href="/tags/PreparedStatement/" style="font-size: 10px;">PreparedStatement</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Hae Jin</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yoursite.com/2018/11/01/ajax-xhr/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

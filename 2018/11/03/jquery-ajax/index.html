@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+	
+	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosanskr.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css">	
+	<link rel="stylesheet" href="/css/style.css">
+	
+    
+
+    
+    <title>jQuery를 이용한 Ajax | Don&#39;t forget</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="" />
+    
+    <meta name="description" content="jQuery를 이용한 Ajax XHR을 이용한 순수 자바스크립트 Ajax는 크로스 브라우징이 안됨** 크로스 브라우징: 하나의 코드로 다양한 브라우저에서 동작 Ajax의 응답을 jQuery DOM을 이용하여 손쉽게 적용가능하다  jQuery Ajax API $객체.load(url [,data] [,complete]); $.get(url [,data] [,s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery를 이용한 Ajax">
+<meta property="og:url" content="http://yoursite.com/2018/11/03/jquery-ajax/index.html">
+<meta property="og:site_name" content="Don&#39;t forget">
+<meta property="og:description" content="jQuery를 이용한 Ajax XHR을 이용한 순수 자바스크립트 Ajax는 크로스 브라우징이 안됨** 크로스 브라우징: 하나의 코드로 다양한 브라우저에서 동작 Ajax의 응답을 jQuery DOM을 이용하여 손쉽게 적용가능하다  jQuery Ajax API $객체.load(url [,data] [,complete]); $.get(url [,data] [,s">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-11-19T11:12:58.733Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery를 이용한 Ajax">
+<meta name="twitter:description" content="jQuery를 이용한 Ajax XHR을 이용한 순수 자바스크립트 Ajax는 크로스 브라우징이 안됨** 크로스 브라우징: 하나의 코드로 다양한 브라우저에서 동작 Ajax의 응답을 jQuery DOM을 이용하여 손쉽게 적용가능하다  jQuery Ajax API $객체.load(url [,data] [,complete]); $.get(url [,data] [,s">
+    
+
+    
+        <link rel="alternate" href="/" title="Don&#39;t forget" type="application/atom+xml" />
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">lazy</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/">Programing</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/CSS/">CSS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JDBC/">JDBC</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/JSP/">JSP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Javascript/">Javascript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Spring/">Spring</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/Web/">Web</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Programing/jQuery/">jQuery</a></li></ul></li></ul>
+                                    
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Programing/jQuery/">jQuery</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-jquery-ajax" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        jQuery를 이용한 Ajax
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/11/03/jquery-ajax/" class="article-date">
+            <time datetime="2018-11-03T11:09:53.000Z" itemprop="datePublished">2018-11-03</time>
+        </a>
+    </div>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h3 id="jQuery를-이용한-Ajax"><a href="#jQuery를-이용한-Ajax" class="headerlink" title="jQuery를 이용한 Ajax"></a>jQuery를 이용한 Ajax</h3><ul>
+<li>XHR을 이용한 순수 자바스크립트 Ajax는 크로스 브라우징이 안됨<br>** 크로스 브라우징: 하나의 코드로 다양한 브라우저에서 동작</li>
+<li>Ajax의 응답을 jQuery DOM을 이용하여 손쉽게 적용가능하다</li>
+</ul>
+<h2 id="jQuery-Ajax-API"><a href="#jQuery-Ajax-API" class="headerlink" title="jQuery Ajax API"></a>jQuery Ajax API</h2><ul>
+<li>$객체.load(url [,data] [,complete]);</li>
+<li>$.get(url [,data] [,sucess] [,dataType]);</li>
+<li>$.post(url [,data] [,sucess] [,dataType]);</li>
+<li>$.ajax(url [,settings]);</li>
+<li>$.ajax([settings]);</li>
+</ul>
+<hr>
+
+<h3 id="객체-load-url-data-complete"><a href="#객체-load-url-data-complete" class="headerlink" title="$객체.load(url [,data] [,complete]);"></a>$객체.load(url [,data] [,complete]);</h3><ul>
+<li>응답 텍스트를 .load 함수가 시작된 $객체에 반영한다</li>
+<li>응답 데이터를 $객체의 자식요소로 삽입한다</li>
+<li><p>추가적인 기능을 수행하려면 complete 매개변수에 지정된 콜백함수를 통해 작성한다</p>
+</li>
+<li><p>ex) $(“#resultLayout”).load(“ajax_ok.jsp”);</p>
+</li>
+<li><p>url<br>: Ajax 통신 요청 url<br>쿼리스트링을 붙여서 GET method 통신으로 사용하기도 한다</p>
+</li>
+<li><p>data<br>: 요청 파라미터<br>JSON Object 또는 String 타입<br>  JSON Object로 입력 시 POST 통신<br>  String으로 입력 시 GET 통신</p>
+</li>
+<li><p>complete<br>: 요청 완료 후 응답 callback function<br>function(<br>&nbsp;&nbsp; String responseText , // 응답 텍스트<br>&nbsp;&nbsp; String textStatus, // 응답 상태코드 메시지<br>&nbsp;&nbsp; jqXHR jqXHR) // jQuery 객체타입의 XHR</p>
+</li>
+</ul>
+<h3 id="get-url-data-sucess-dataType"><a href="#get-url-data-sucess-dataType" class="headerlink" title="$.get(url [,data] [,sucess] [,dataType]);"></a>$.get(url [,data] [,sucess] [,dataType]);</h3><h3 id="post-url-data-sucess-dataType"><a href="#post-url-data-sucess-dataType" class="headerlink" title="$.post(url [,data] [,sucess] [,dataType]);"></a>$.post(url [,data] [,sucess] [,dataType]);</h3><ul>
+<li><p>url<br>: 요청 url</p>
+</li>
+<li><p>data<br>: 요청 파라미터<br>JSON, String</p>
+</li>
+<li><p>sucess<br>: 요청 응답 성공 시 callback function<br>function(<br>&nbsp;&nbsp; PlainObject data, // 응답데이터<br>  &nbsp;&nbsp; String textStatus,<br>  &nbsp;&nbsp; jqXHR jqXHR)</p>
+</li>
+<li><p>dataType<br>: 응답 메시지의 데이터 타입<br>xml, json, script, text, html<br>(설정하지 않으면 알아서 판단하지만 대부분 text로 받음)</p>
+</li>
+</ul>
+<h3 id="ajax-url-settings"><a href="#ajax-url-settings" class="headerlink" title="$.ajax(url [,settings]);"></a>$.ajax(url [,settings]);</h3><h3 id="ajax-settings-lt-사용-추천"><a href="#ajax-settings-lt-사용-추천" class="headerlink" title="$.ajax([settings]); &lt;- 사용 추천"></a>$.ajax([settings]); &lt;- 사용 추천</h3><h4 id="settings-옵션"><a href="#settings-옵션" class="headerlink" title="settings 옵션"></a>settings 옵션</h4><ul>
+<li><p>type* : “GET”(기본값) | “POST”<br>jQuery 1.9.0 이전 버전을 지원하는 설정값 (method 항목과 같이 볼 것)</p>
+</li>
+<li><p>url* : String 타입/ AJAX 통신 요청 URL</p>
+</li>
+<li><p>data* : PlainObject, String, Array 타입/ 요청 파라미터</p>
+</li>
+<li><p>dataType* : “xml” | “json” | “script” | “html” | “text”<br>응답 데이터의 처리방식(데이터형식)<br>지정된 형식에 맞게 응답받은 데이터를 파싱(추출)함</p>
+</li>
+<li><p>sucess* : function(Anything data, String textStatus, jqXHR jqXHR)<br>요청 성공 시 호출될 callback 함수<br>- data : 응답받은 데이터가 넘어온다<br>- textStatus : 상태코드에 대한 문자열<br>- jqXHR : jqXHR를 직접사용하고 싶다면 해당 jqXHR객체를 사용(jQuery 객체로 온다)</p>
+</li>
+<li><p>error* : function(jqXHR jqXHR, String textStatus, String errorThrown)<br>요청 실패 시 호출될 callback 함수</p>
+</li>
+<li><p>async : true(기본값-비동기) | false<br>비동기 처리 설정</p>
+</li>
+<li><p>beforeSend : function(jqXHR jqXHR, Object settings)<br>요청 전 처리할 기능 작성</p>
+</li>
+<li><p>complete : function(jqXHR jqXHR, String textStatus)<br>요청 완료 후 처리할 기능 작성 (성공/실패와 무관하게 동작한다)</p>
+</li>
+<li><p>method : “GET” | “POST” | “PUT” | “DELETE” | …<br>RESTful API의 method를 지정할 수 있게 해주는 설정</p>
+</li>
+<li><p>statusCode : PlainObject 타입/ 응답 상태 코드에 따른 처리 코드<br>ex)<br>statusCode: {<br>&nbsp;&nbsp; 404: function(){<br>&nbsp;&nbsp;    }<br>&nbsp;&nbsp;    ,403: function(){<br>&nbsp;&nbsp;    }<br>&nbsp;&nbsp;    ,500: function(){<br>&nbsp;&nbsp;    }<br>}</p>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yoursite.com/2018/11/03/jquery-ajax/" data-id="cjoo7kg7r003li4uqkfhlguni" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/ppoffice/hexo-theme-hueman" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/11/13/invalid-LOC-header/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            invalid LOC header 에러 해결
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/11/02/marshalling/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">마샬링, 언마샬링</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2018/11/14/di/" class="title">의존성 주입</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T14:21:00.000Z" itemprop="datePublished">2018-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Spring/">Spring</a></p>
+                            <p class="item-title"><a href="/2018/11/13/setup-Spring/" class="title">스프링 설치 &amp; 환경 구축</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T13:19:47.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/11/13/invalid-LOC-header/" class="title">invalid LOC header 에러 해결</a></p>
+                            <p class="item-date"><time datetime="2018-11-13T13:11:36.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/jQuery/">jQuery</a></p>
+                            <p class="item-title"><a href="/2018/11/03/jquery-ajax/" class="title">jQuery를 이용한 Ajax</a></p>
+                            <p class="item-date"><time datetime="2018-11-03T11:09:53.000Z" itemprop="datePublished">2018-11-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Programing/">Programing</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Programing/Web/">Web</a></p>
+                            <p class="item-title"><a href="/2018/11/02/marshalling/" class="title">마샬링, 언마샬링</a></p>
+                            <p class="item-date"><time datetime="2018-11-02T11:06:46.000Z" itemprop="datePublished">2018-11-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/">Programing</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/CSS/">CSS</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JDBC/">JDBC</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/JSP/">JSP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Javascript/">Javascript</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Spring/">Spring</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/Web/">Web</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programing/jQuery/">jQuery</a><span class="category-list-count">4</span></li></ul></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">13</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DAO/">DAO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DTO/">DTO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PreparedStatement/">PreparedStatement</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Singleton/">Singleton</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/DAO/" style="font-size: 20px;">DAO</a> <a href="/tags/DTO/" style="font-size: 20px;">DTO</a> <a href="/tags/PreparedStatement/" style="font-size: 10px;">PreparedStatement</a> <a href="/tags/Singleton/" style="font-size: 10px;">Singleton</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Hae Jin</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yoursite.com/2018/11/03/jquery-ajax/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
